@@ -1,0 +1,140 @@
+MDAD :Applying policy: %+C%14CNETQMADDCFG-sub-ctp-HandleMovesAndRenames%-C.
+MDAD :  Applying to move #1.
+MDAD :    Evaluating selection criteria for rule 'set move destination'.
+MDAD :      (if-operation equal "move") = TRUE.
+MDAD :    Rule selected.
+MDAD :    Applying rule 'set move destination'.
+MDAD :      Action: do-set-local-variable("src-dn",scope="policy",token-src-dn()).
+MDAD :        arg-string(token-src-dn())
+MDAD :          token-src-dn()
+MDAD :            Token Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\goodNight1".
+MDAD :          Arg Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\goodNight1".
+MDAD :      Action: do-set-local-variable("old-src-dn",scope="policy",token-xpath("@old-src-dn")).
+MDAD :        arg-string(token-xpath("@old-src-dn"))
+MDAD :          token-xpath("@old-src-dn")
+MDAD :            Token Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\GoodOU\goodNight1".
+MDAD :          Arg Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\GoodOU\goodNight1".
+MDAD :      Action: do-for-each(arg-node-set(token-global-variable("drv.domains"))).
+MDAD :        arg-node-set(token-global-variable("drv.domains"))
+MDAD :          token-global-variable("drv.domains")
+MDAD :          Token Value: {<instance>,<instance>}.
+MDAD :          Arg Value: {<instance>,<instance>}.
+MDAD :        Performing actions for local-variable(current-node) = <instance>.
+MDAD :          Action: do-set-local-variable("domain_container",scope="policy",token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")).
+MDAD :            arg-string(token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()"))
+MDAD :              token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")
+MDAD :                Token Value: "data\users\novdom".
+MDAD :              Arg Value: "data\users\novdom".
+MDAD :          Action: do-if().
+MDAD :            Evaluating conditions.
+MDAD :              Expanded variable reference '$domain_container$' to 'data\users\novdom'.
+MDAD :              (if-src-dn in-subtree "$domain_container$") = TRUE.
+MDAD :            Performing if actions.
+MDAD :              Action: do-set-op-property("unmatched-src-dn",token-unmatched-src-dn(convert="true")).
+MDAD :                arg-string(token-unmatched-src-dn(convert="true"))
+MDAD :                  token-unmatched-src-dn(convert="true")
+MDAD :                    Token Value: "CN=goodNight1".
+MDAD :                  Arg Value: "CN=goodNight1".
+MDAD :              Action: do-set-local-variable("drv.domain.container.name",scope="policy",token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")).
+MDAD :                arg-string(token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()"))
+MDAD :                  token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")
+MDAD :                    Token Value: "data\users\novdom".
+MDAD :                  Arg Value: "data\users\novdom".
+MDAD :              Action: do-set-op-property("drv.domain.container.name","\"+token-global-variable("dirxml.auto.treename")+"\"+token-local-variable("drv.domain.container.name")).
+MDAD :                arg-string("\"+token-global-variable("dirxml.auto.treename")+"\"+token-local-variable("drv.domain.container.name"))
+MDAD :                  token-text("\")
+MDAD :                  token-global-variable("dirxml.auto.treename")
+MDAD :                    Token Value: "IDM 4.5 - 164.99.178.58".
+MDAD :                  token-text("\")
+MDAD :                  token-local-variable("drv.domain.container.name")
+MDAD :                    Token Value: "data\users\novdom".
+MDAD :                  Arg Value: "\IDM 4.5 - 164.99.178.58\data\users\novdom".
+MDAD :              Action: do-set-local-variable("drv.domain.dns.name",scope="policy",token-xpath("$current-node/definition[@name="drv.domain.dns.name"]/value/text()")).
+MDAD :                arg-string(token-xpath("$current-node/definition[@name="drv.domain.dns.name"]/value/text()"))
+MDAD :                  token-xpath("$current-node/definition[@name="drv.domain.dns.name"]/value/text()")
+MDAD :                    Token Value: "Novdom.com".
+MDAD :                  Arg Value: "Novdom.com".
+MDAD :              Action: do-set-local-variable("drv.user.container",scope="policy",token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")).
+MDAD :                arg-string(token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()"))
+MDAD :                  token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")
+MDAD :                    Token Value: "OU=eDir,DC=NovDom,DC=com".
+MDAD :                  Arg Value: "OU=eDir,DC=NovDom,DC=com".
+MDAD :              Action: do-set-local-variable("drv.subPlacementType",scope="policy",token-xpath("$current-node/definition[@name="drv.subPlacementType"]/value/text()")).
+MDAD :                arg-string(token-xpath("$current-node/definition[@name="drv.subPlacementType"]/value/text()"))
+MDAD :                  token-xpath("$current-node/definition[@name="drv.subPlacementType"]/value/text()")
+MDAD :                    Token Value: "mirrored".
+MDAD :                  Arg Value: "mirrored".
+MDAD :              Action: do-if().
+MDAD :                Evaluating conditions.
+MDAD :                  (if-local-variable 'drv.subPlacementType' equal "flat") = FALSE.
+MDAD :                Performing else actions.
+MDAD :                  Action: do-set-local-variable("umatched_container",scope="policy",token-op-property("unmatched-src-dn")).
+MDAD :                    arg-string(token-op-property("unmatched-src-dn"))
+MDAD :                      token-op-property("unmatched-src-dn")
+MDAD :                        Token Value: "CN=goodNight1".
+MDAD :                      Arg Value: "CN=goodNight1".
+MDAD :                  Action: do-if().
+MDAD :                    Evaluating conditions.
+MDAD :                      (if-local-variable 'unmatched_container' match "") = FALSE.
+MDAD :                    Performing else actions.
+MDAD :                      Action: do-set-op-dest-dn(arg-dn(token-local-variable("unmatched_container")+","+token-local-variable("drv.user.container"))).
+MDAD :                        arg-dn(token-local-variable("unmatched_container")+","+token-local-variable("drv.user.container"))
+MDAD :                          token-local-variable("unmatched_container")
+MDAD :                            Token Value: "".
+MDAD :                          token-text(",")
+MDAD :                          token-local-variable("drv.user.container")
+MDAD :                            Token Value: "OU=eDir,DC=NovDom,DC=com".
+MDAD :                          Arg Value: ",OU=eDir,DC=NovDom,DC=com".
+MDAD :                  Action: do-set-op-dest-dn(arg-dn(token-op-property("unmatched-src-dn")+","+token-local-variable("drv.user.container"))).
+MDAD :                    arg-dn(token-op-property("unmatched-src-dn")+","+token-local-variable("drv.user.container"))
+MDAD :                      token-op-property("unmatched-src-dn")
+MDAD :                        Token Value: "CN=goodNight1".
+MDAD :                      token-text(",")
+MDAD :                      token-local-variable("drv.user.container")
+MDAD :                        Token Value: "OU=eDir,DC=NovDom,DC=com".
+MDAD :                      Arg Value: "CN=goodNight1,OU=eDir,DC=NovDom,DC=com".
+MDAD :        Performing actions for local-variable(current-node) = <instance>.
+MDAD :          Action: do-set-local-variable("domain_container",scope="policy",token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")).
+MDAD :            arg-string(token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()"))
+MDAD :              token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")
+MDAD :                Token Value: "data\users\netq".
+MDAD :              Arg Value: "data\users\netq".
+MDAD :          Action: do-if().
+MDAD :            Evaluating conditions.
+MDAD :              Expanded variable reference '$domain_container$' to 'data\users\netq'.
+MDAD :              (if-src-dn in-subtree "$domain_container$") = FALSE.
+MDAD :            Performing else actions.
+MDAD :              Action: do-set-op-src-dn(arg-dn(token-local-variable("old-src-dn"))).
+MDAD :                arg-dn(token-local-variable("old-src-dn"))
+MDAD :                  token-local-variable("old-src-dn")
+MDAD :                    Token Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\GoodOU\goodNight1".
+MDAD :                  Arg Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\GoodOU\goodNight1".
+MDAD :              Action: do-if().
+MDAD :                Evaluating conditions.
+MDAD :                  Expanded variable reference '$domain_container$' to 'data\users\netq'.
+MDAD :                  (if-src-dn in-subtree "$domain_container$") = FALSE.
+MDAD :                Performing else actions.
+MDAD :              Action: do-set-op-src-dn(arg-dn(token-local-variable("src-dn"))).
+MDAD :                arg-dn(token-local-variable("src-dn"))
+MDAD :                  token-local-variable("src-dn")
+MDAD :                    Token Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\goodNight1".
+MDAD :                  Arg Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\goodNight1".
+MDAD :    Evaluating selection criteria for rule 'associate mirror root'.
+MDAD :      (if-operation equal "move") = TRUE.
+MDAD :      (if-xpath true "translate(./parent/@src-dn,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=translate(./operation-data/@drv.domain.container.name,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')") = FALSE.
+MDAD :    Rule rejected.
+MDAD :Policy returned:
+MDAD :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product edition="Advanced" version="4.5.0.0">DirXML</product>
+    <contact>NetIQ Corporation</contact>
+  </source>
+  <input>
+    <move cached-time="20150224031226.603Z" class-name="User" dest-dn="CN=goodNight1,OU=eDir,DC=NovDom,DC=com" event-id="linux-yal5#20150224031226#1#2:92ff468b-44f1-4879-eeb3-8b46ff92f144" old-src-dn="\SDHAVAL-LINUX-TREE-45\data\users\novdom\GoodOU\goodNight1" qualified-old-src-dn="O=data\OU=users\OU=novdom\OU=GoodOU\CN=goodNight1" src-dn="\SDHAVAL-LINUX-TREE-45\data\users\novdom\goodNight1" timestamp="1424705798#23">
+      <association state="associated">NOVDOM#f65580e8c06217449a89d4cbac5cb101</association>
+      <parent qualified-src-dn="O=data\OU=users\OU=novdom" src-dn="\SDHAVAL-LINUX-TREE-45\data\users\novdom" src-entry-id="37105"/>
+      <operation-data drv.domain.container.name="\IDM 4.5 - 164.99.178.58\data\users\novdom" unmatched-src-dn="CN=goodNight1"/>
+    </move>
+  </input>
+</nds>

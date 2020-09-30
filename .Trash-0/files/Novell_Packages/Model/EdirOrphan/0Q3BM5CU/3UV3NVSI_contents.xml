@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.novell.com/dirxml/workflow/form emailTemplates.xsd">
+	<form:token-descriptions>
+		<form:token-description description="The user's first name" item-name="userFirstName"/>
+		<form:token-description description="Request name" item-name="requestTitle"/>
+		<form:token-description description="Submitted by" item-name="initiatorFullName"/>
+		<form:token-description description="Recipient's full name" item-name="recipientFullName"/>
+		<form:token-description description="The protocol to the provisioning user application.  Typically 'http'." item-name="PROTOCOL"/>
+		<form:token-description description="The secure protocol to the provisioning user application.  Typically 'https'." item-name="SECURE_PROTOCOL"/>
+		<form:token-description description="The host name of the provisioning user application." item-name="HOST"/>
+		<form:token-description description="The port to the provisioning user application." item-name="PORT"/>
+		<form:token-description description="The secure port to the provisioning user application." item-name="SECURE_PORT"/>
+		<form:token-description description="The context/path of the URL to the provisioning user application to get a list of tasks assigned to a email recipient." item-name="TASKLIST_CONTEXT"/>
+		<form:token-description description="The context/path to the provisioning user application to get details of the current task." item-name="TASK_DETAILS"/>
+	</form:token-descriptions>
+您好，  本信件旨在提醒您，您的佇列中有待核准的提供申請。  申請名稱：$requestTitle$ 提交者：$initiatorFullName$ 收件者：$recipientFullName$  請在 $PROTOCOL$://$HOST$:$PORT$/$TASK_DETAILS$ 檢閱此申請的詳細資料，以採取適當的動作。  您可在 $PROTOCOL$://$HOST$:$PORT$/$TASKLIST_CONTEXT$ 檢閱待您核准的所有申請清單。</form:text>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="request initiator name" item-name="initiatorFullName"/>
+		<form:token-description description="request instance id" item-name="requestId"/>
+		<form:token-description description="submission time" item-name="requestSubmissionTime"/>
+		<form:token-description description="request title" item-name="requestTitle"/>
+	</form:token-descriptions>
+Hallo,
+
+Het werkstroomproces voor uw attestaanvraag is voltooid.
+
+Aanvraagnaam: $requestTitle$
+Bevestigingsnummer: $requestId$
+Ingediend door: $initiatorFullName$
+Ingediend op: $requestSubmissionTime$
+
+U de attestresultaten bekijken door uw bevestigingsnummer in te voeren op de pagina Status attestaanvraag weergeven.
+
+</form:text>

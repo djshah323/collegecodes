@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Request name" item-name="requestTitle"/>
+		<form:token-description description="Submitted by" item-name="initiatorFullName"/>
+		<form:token-description description="Recipient's full name" item-name="recipientFullName"/>
+		<form:token-description description="The protocol to the provisioning user application.  Typically 'http'." item-name="PROTOCOL"/>
+		<form:token-description description="The secure protocol to the provisioning user application.  Typically 'https'." item-name="SECURE_PROTOCOL"/>
+		<form:token-description description="The host name of the provisioning user application." item-name="HOST"/>
+		<form:token-description description="The port to the provisioning user application." item-name="PORT"/>
+		<form:token-description description="The secure port to the provisioning user application." item-name="SECURE_PORT"/>
+		<form:token-description description="The context/path of the URL to the provisioning user application to get a list of tasks assigned to a email recipient." item-name="TASKLIST_CONTEXT"/>
+		<form:token-description description="The context/path to the provisioning user application to get details of the current task." item-name="TASK_DETAILS"/>
+	</form:token-descriptions> 
+È stata inoltrata una richiesta di ruolo che richiede approvazione.
+
+Nome richiesta: $requestTitle$
+Inoltrata da: $initiatorFullName$
+Destinatario: $recipientFullName$
+
+Per prendere la decisione corretta in merito, rivedere i dettagli di questa richiesta di ruolo in $PROTOCOL$://$HOST$:$PORT$/$TASK_DETAILS$.
+
+L'elenco di tutte le richieste di ruolo in attesa di approvazione si trova in $PROTOCOL$://$HOST$:$PORT$/$TASKLIST_CONTEXT$.
+
+</form:text>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.novell.designer.model:CObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.novell.designer.model="http://com.novell.designer.model" name="Send Info_de">
+  <attributes xsi:type="com.novell.designer.model:CHeavyData" attrName="contents"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="notfMergeTemplateSubject" value="Identitätsinformationen über $firstName$ $lastName$"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="Idm:PackageAssocGuid" value="09X65XXJ_201007271210430032"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="Idm:PackageGuid" value="HFKOI38M_201007271206250496"/>
+  <attributes xsi:type="com.novell.designer.model:CLong" attrName="Idm:ContentChecksum" value="1998688018"/>
+</com.novell.designer.model:CObject>

@@ -1,0 +1,80 @@
+O365 :Applying policy: %+C%14CNOVLOFFIDCFG-pub-etp%-C.
+O365 :  Applying to modify #1.
+O365 :    Evaluating selection criteria for rule 're-format CN'.
+O365 :      (if-class-name equal "User") = TRUE.
+O365 :    Rule selected.
+O365 :    Applying rule 're-format CN'.
+O365 :      Action: do-set-local-variable("attrNS",scope="policy",arg-node-set(token-xpath("modify-attr[@attr-name='CN']//value | add-attr[@attr-name='CN']/value"))).
+O365 :        arg-node-set(token-xpath("modify-attr[@attr-name='CN']//value | add-attr[@attr-name='CN']/value"))
+O365 :          token-xpath("modify-attr[@attr-name='CN']//value | add-attr[@attr-name='CN']/value")
+O365 :          Token Value: {<value> @type = "string",<value> @type = "string"}.
+O365 :          Arg Value: {<value> @type = "string",<value> @type = "string"}.
+O365 :      Action: do-for-each(arg-node-set(token-local-variable("attrNS"))).
+O365 :        arg-node-set(token-local-variable("attrNS"))
+O365 :          token-local-variable("attrNS")
+O365 :          Token Value: {<value> @type = "string",<value> @type = "string"}.
+O365 :          Arg Value: {<value> @type = "string",<value> @type = "string"}.
+O365 :        Performing actions for local-variable(current-node) = <value> @type = "string".
+O365 :          Action: do-set-local-variable("nodeVal",scope="policy",token-split("@",token-xpath("$current-node/text()"))).
+O365 :            arg-string(token-split("@",token-xpath("$current-node/text()")))
+O365 :              token-split("@",token-xpath("$current-node/text()"))
+O365 :                token-split("@",token-xpath("$current-node/text()"))
+O365 :                  token-xpath("$current-node/text()")
+O365 :                    Token Value: "Pass1@admincentral.onmicrosoft.com".
+O365 :                  Arg Value: "Pass1@admincentral.onmicrosoft.com".
+O365 :                Token Value: "Pass1".
+O365 :              Arg Value: "Pass1".
+O365 :          Action: do-strip-xpath("$current-node/text()").
+O365 :          Action: do-append-xml-text("$current-node",token-xpath("$nodeVal")).
+O365 :            arg-string(token-xpath("$nodeVal"))
+O365 :              token-xpath("$nodeVal")
+O365 :                Token Value: "Pass1".
+O365 :              Arg Value: "Pass1".
+O365 :        Performing actions for local-variable(current-node) = <value> @type = "string".
+O365 :          Action: do-set-local-variable("nodeVal",scope="policy",token-split("@",token-xpath("$current-node/text()"))).
+O365 :            arg-string(token-split("@",token-xpath("$current-node/text()")))
+O365 :              token-split("@",token-xpath("$current-node/text()"))
+O365 :                token-split("@",token-xpath("$current-node/text()"))
+O365 :                  token-xpath("$current-node/text()")
+O365 :                    Token Value: "Passed1@admincentral.onmicrosoft.com".
+O365 :                  Arg Value: "Passed1@admincentral.onmicrosoft.com".
+O365 :                Token Value: "Passed1".
+O365 :              Arg Value: "Passed1".
+O365 :          Action: do-strip-xpath("$current-node/text()").
+O365 :          Action: do-append-xml-text("$current-node",token-xpath("$nodeVal")).
+O365 :            arg-string(token-xpath("$nodeVal"))
+O365 :              token-xpath("$nodeVal")
+O365 :                Token Value: "Passed1".
+O365 :              Arg Value: "Passed1".
+O365 :    Evaluating selection criteria for rule 'convert modify CN to rename'.
+O365 :      (if-class-name equal "User") = TRUE.
+O365 :      (if-operation match "modify") = TRUE.
+O365 :      (if-op-attr 'CN' available) = TRUE.
+O365 :    Rule selected.
+O365 :    Applying rule 'convert modify CN to rename'.
+O365 :      Action: do-rename-dest-object(class-name="User",token-xpath("./modify-attr[@attr-name="CN"]/add-value/value/text()")).
+O365 :        arg-string(token-xpath("./modify-attr[@attr-name="CN"]/add-value/value/text()"))
+O365 :          token-xpath("./modify-attr[@attr-name="CN"]/add-value/value/text()")
+O365 :            Token Value: "Passed1".
+O365 :          Arg Value: "Passed1".
+O365 :      Action: do-strip-xpath("./modify-attr[@attr-name="CN"]").
+O365 :    Evaluating selection criteria for rule 'veto empty modify'.
+O365 :      (if-operation match "modify") = TRUE.
+O365 :      (if-xpath true "count(./modify-attr)=0") = TRUE.
+O365 :    Rule selected.
+O365 :    Applying rule 'veto empty modify'.
+O365 :      Action: do-veto().
+O365 :Policy returned:
+O365 :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="?.?.?.?">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <rename class-name="User" event-id="0">
+      <association>aa747877-339a-4795-af57-fbf4f0b4ff71</association>
+      <new-name>Passed1</new-name>
+    </rename>
+  </input>
+</nds>

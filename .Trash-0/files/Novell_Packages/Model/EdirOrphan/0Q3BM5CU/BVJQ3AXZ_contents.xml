@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Password hint" item-name="Hint"/>
+		<form:token-description description="User full name" item-name="UserFullName"/>
+	</form:token-descriptions>
+	<head>
+		<title>パスワードヒントの要求</title>
+		<style>
+			<!-- body { font-family: Trebuchet MS } -->
+		</style>
+	</head>
+	<body BGCOLOR="#FFFFFF">
+		<p>$UserFullName$ 様</p>
+		<p>あなたは、パスワードのヒントを電子メールで送信するように要求しました。パスワードのヒントは次のとおりです:</p>
+		<p>ヒント: $Hint$</p>
+		<p>ヒントを送信するように要求していなかった場合には、ヘルプデスク、(012) 345-6789に電話するか、
+  <a href="mailto:help.desk@mycompany.com">help.desk@mycompany.com</a>に電子メールを送って、問い合わせてください。</p>
+		<p> - 自動化セキュリティ</p>
+		<p>
+			<img ALT="Powered by Novell" SRC="cid:powered_by_novell.gif" height="29" width="80"/>
+		</p>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Target entity's Firstname" item-name="firstName"/>
+		<form:token-description description="Target entity's Lastname" item-name="lastName"/>
+		<form:token-description description="Url to get a detailed profile." item-name="detailUrl"/>
+		<form:token-description description="Email Sender Firstname" item-name="initiatorFirstName"/>
+		<form:token-description description="Email Sender Lastname" item-name="initiatorLastName"/>
+	</form:token-descriptions> 
+您好：
+
+请单击以下链接获取关于 $firstName$ $lastName$：
+$detailUrl$ 的详细配置文件。
+
+此致，
+
+$initiatorFirstName$ $initiatorLastName$。
+
+</form:text>

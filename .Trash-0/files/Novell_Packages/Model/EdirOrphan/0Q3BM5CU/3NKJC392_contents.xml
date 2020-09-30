@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Request name" item-name="requestTitle"/>
+		<form:token-description description="Request identifier" item-name="requestId"/>
+		<form:token-description description="Request submission time" item-name="requestSubmissionTime"/>
+		<form:token-description description="Submitted by" item-name="initiatorFullName"/>
+		<form:token-description description="Recipient's full name" item-name="recipientFullName"/>
+		<form:token-description description="Initiator's full name" item-name="initiatorFullName"/>
+		<form:token-description description="Status of the request" item-name="requestStatus"/>
+	</form:token-descriptions> 
+Hi,
+
+The approval process of your provisioning request has completed.
+
+Request name: $requestTitle$
+Request id: $requestId$
+Submitted by: $initiatorFullName$
+Submitted on: $requestSubmissionTime$
+Recipient: $recipientFullName$
+
+Status: $requestStatus$
+</form:text>

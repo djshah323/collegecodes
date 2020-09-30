@@ -1,0 +1,41 @@
+MDAD :Applying policy: %+C%14CNETQMADDCFG-sub-pp%-C.
+MDAD :  Applying to move #1.
+MDAD :    Evaluating selection criteria for rule 'placement for all objects'.
+MDAD :    Rule selected.
+MDAD :    Applying rule 'placement for all objects'.
+MDAD :      Action: do-if().
+MDAD :        Evaluating conditions.
+MDAD :          (if-local-variable 'drv.subPlacementType' equal "flat") = FALSE.
+MDAD :        Performing else actions.
+MDAD :          Action: do-set-op-dest-dn(arg-dn(token-op-property("unmatched-src-dn")+","+token-op-property("drv.user.container"))).
+MDAD :            arg-dn(token-op-property("unmatched-src-dn")+","+token-op-property("drv.user.container"))
+MDAD :              token-op-property("unmatched-src-dn")
+MDAD :                Token Value: "".
+MDAD :              token-text(",")
+MDAD :              token-op-property("drv.user.container")
+MDAD :                Token Value: "".
+MDAD :              Arg Value: ",".
+MDAD :    Evaluating selection criteria for rule 'Use Full Name for naming user objects'.
+MDAD :      (if-class-name equal "User") = TRUE.
+MDAD :      (if-global-variable 'FullNameMap' equal "true") = TRUE.
+MDAD :    Rule selected.
+MDAD :    Applying rule 'Use Full Name for naming user objects'.
+MDAD :      Action: do-set-op-dest-dn(arg-dn("CN="+token-escape-for-dest-dn(token-attr("Full Name"))+","+token-dest-dn(length="-2"))).
+MDAD :        arg-dn("CN="+token-escape-for-dest-dn(token-attr("Full Name"))+","+token-dest-dn(length="-2"))
+MDAD :          token-text("CN=")
+MDAD :          token-escape-for-dest-dn(token-attr("Full Name"))
+MDAD :            token-escape-for-dest-dn(token-attr("Full Name"))
+MDAD :              token-attr("Full Name")
+MDAD :                Query from policy
+MDAD :                
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="4.5.0.0">DirXML</product>
+    <contact>NetIQ Corporation</contact>
+  </source>
+  <input>
+    <query class-name="User" dest-dn="\1122-RJ-TREE\data\users\idv2\CouManagerd1" dest-entry-id="42203" scope="entry">
+      <read-attr attr-name="Full Name"/>
+    </query>
+  </input>
+</nds>

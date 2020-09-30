@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.novell.designer.model:CObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.novell.designer.model="http://com.novell.designer.model" name="Role Request Notification_it">
+  <attributes xsi:type="com.novell.designer.model:CHeavyData" attrName="contents"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="notfMergeTemplateSubject" value="Nuova richiesta di ruolo"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="Idm:PackageAssocGuid" value="0FW0KE36_201007271209480230"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="Idm:PackageGuid" value="HFKOI38M_201007271206250496"/>
+  <attributes xsi:type="com.novell.designer.model:CLong" attrName="Idm:ContentChecksum" value="3491387766"/>
+</com.novell.designer.model:CObject>

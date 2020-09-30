@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Last name of submitter" item-name="submitterLastName"/>
+		<form:token-description description="First name of submitter" item-name="submitterFirstName"/>
+		<form:token-description description="Last name of a user the assignment corresponds to" item-name="userLastName"/>
+		<form:token-description description="First name of a user the assignment corresponds to" item-name="userFirstName"/>
+		<form:token-description description="Assignment effective time" item-name="startTime"/>
+		<form:token-description description="Assignment expiration time" item-name="expirationTime"/>
+		<form:token-description description="List of provisioning definition resources this assignment applies to" item-name="resources"/>
+		<form:token-description description="The protocol to the provisioning user application.  Typically 'http'." item-name="PROTOCOL"/>
+		<form:token-description description="The secure protocol to the provisioning user application.  Typically 'https'." item-name="SECURE_PROTOCOL"/>
+		<form:token-description description="The host name of the provisioning user application." item-name="HOST"/>
+		<form:token-description description="The port to the provisioning user application." item-name="PORT"/>
+		<form:token-description description="The secure port to the provisioning user application." item-name="SECURE_PORT"/>
+		<form:token-description description="The context/path of the URL to the provisioning user application to get a list of availability assignments." item-name="ASSIGNMENT_LIST_CONTEXT"/>
+	</form:token-descriptions>
+  Hola:
+$submitterFirstName$ $submitterLastName$ ha actualizado los valores de configuración de disponibilidad para $userFirstName$ $userLastName$.
+Este usuario ha $operation$ una configuración de disponibilidad que se aplica a los siguientes recursos:
+  $resources$
+Este valor de configuración indica que $userFirstName$ $userLastName$ no está disponible para trabajar con esos recursos durante el intervalo temporal indicado a continuación:
+  Hora de inicio: $startTime$
+  Hora de caducidad: $expirationTime$
+Cuando un usuario no está disponible, cualquier delegado asignado puede gestionar las peticiones de recursos de dicho usuario.
+Puede ver una lista con su configuración de disponibilidad en $PROTOCOL$://$HOST$:$PORT$/$AVAILABILITY_CONTEXT$.
+      
+</form:text>

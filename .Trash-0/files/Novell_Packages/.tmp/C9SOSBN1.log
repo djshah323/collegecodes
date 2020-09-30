@@ -1,0 +1,142 @@
+AD2Driver :Applying policy: %+C%14CNETQMADENTEX-sub-cp-EntitlementsImpl%-C.
+AD2Driver :  Applying to add #1.
+AD2Driver :    Evaluating selection criteria for rule 'UserAccount entitlement: Veto account creation when entitlement not granted'.
+AD2Driver :      (if-global-variable 'drv.entitlement.UserAccount' equal "true") = TRUE.
+AD2Driver :      (if-class-name equal "User") = TRUE.
+AD2Driver :      (if-entitlement 'UserAccount' not-available) = FALSE.
+AD2Driver :    Rule rejected.
+AD2Driver :    Evaluating selection criteria for rule 'UserAccount entitlement: Veto account creation if incorrectly mirrored'.
+AD2Driver :      (if-global-variable 'drv.entitlement.UserAccount' equal "true") = TRUE.
+AD2Driver :      (if-class-name equal "User") = TRUE.
+AD2Driver :    Rule selected.
+AD2Driver :    Applying rule 'UserAccount entitlement: Veto account creation if incorrectly mirrored'.
+AD2Driver :      Action: do-set-local-variable("addedDomain",scope="policy",token-added-entitlement("UserAccount")).
+AD2Driver :        arg-string(token-added-entitlement("UserAccount"))
+AD2Driver :          token-added-entitlement("UserAccount")
+AD2Driver :            Token Value: "{"ID":"Novdom.com"}".
+AD2Driver :          Arg Value: "{"ID":"Novdom.com"}".
+AD2Driver :      Action: do-set-local-variable("addedDomain",scope="policy",token-xpath("es:getIDM4EntParamField($addedDomain,'ID')")).
+AD2Driver :        arg-string(token-xpath("es:getIDM4EntParamField($addedDomain,'ID')"))
+AD2Driver :          token-xpath("es:getIDM4EntParamField($addedDomain,'ID')")
+AD2Driver :            Token Value: "Novdom.com".
+AD2Driver :          Arg Value: "Novdom.com".
+AD2Driver :      Action: do-if().
+AD2Driver :        Evaluating conditions.
+AD2Driver :          Expanded variable reference '$addedDomain$' to 'Novdom.com'.
+AD2Driver :          (if-op-property 'drv.domain.dns.name' not-equal "$addedDomain$") = FALSE.
+AD2Driver :        Performing else actions.
+AD2Driver :    Evaluating selection criteria for rule 'Prepare to check group entitlements after add'.
+AD2Driver :      (if-global-variable 'drv.entitlement.Group' equal "true") = TRUE.
+AD2Driver :      (if-class-name equal "User") = TRUE.
+AD2Driver :      Query from policy
+AD2Driver :      
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="4.0.2.4">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <query class-name="User" dest-dn="\SDHAVAL-LINUX-TREE-45\data\users\novdom\sub6" dest-entry-id="37325" scope="entry">
+      <read-attr attr-name="DirXML-EntitlementRef"/>
+    </query>
+  </input>
+</nds>
+AD2Driver :      Query from policy result
+AD2Driver :      
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="4.0.2.4">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <output>
+    <instance/>
+  </output>
+</nds>
+AD2Driver :      (if-entitlement 'Group' available) = FALSE.
+AD2Driver :    Rule rejected.
+AD2Driver :    Evaluating selection criteria for rule 'Prepare to check Exchange entitlements after the add'.
+AD2Driver :      (if-global-variable 'drv.exchMailboxMethod' equal "entitlement") = TRUE.
+AD2Driver :      (if-class-name equal "User") = TRUE.
+AD2Driver :      Query from policy
+AD2Driver :      
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="4.0.2.4">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <query class-name="User" dest-dn="\SDHAVAL-LINUX-TREE-45\data\users\novdom\sub6" dest-entry-id="37325" scope="entry">
+      <read-attr attr-name="DirXML-EntitlementRef"/>
+    </query>
+  </input>
+</nds>
+AD2Driver :      Query from policy result
+AD2Driver :      
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="4.0.2.4">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <output>
+    <instance/>
+  </output>
+</nds>
+AD2Driver :      (if-entitlement 'ExchangeMailbox' available) = FALSE.
+AD2Driver :    Rule rejected.
+AD2Driver :Policy returned:
+AD2Driver :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product edition="Advanced" version="4.0.2.10">DirXML</product>
+    <contact>NetIQ Corporation</contact>
+  </source>
+  <input>
+    <add cached-time="20141218064356.257Z" class-name="User" dest-dn="CN=sub6 sub6,CN=Users,DC=Novdom,DC=com" event-id="linux-yal5#20141218064356#1#3:14c694e3-3893-42f6-94ad-e394c6149338" qualified-src-dn="O=data\OU=users\OU=novdom\CN=sub6" src-dn="\SDHAVAL-LINUX-TREE-45\data\users\novdom\sub6" src-entry-id="37325" timestamp="1418885036#5">
+      <add-attr attr-name="DirXML-EntitlementRef">
+        <value timestamp="1418885036#5" type="structured">
+          <component name="nameSpace">1</component>
+          <component name="volume">\SDHAVAL-LINUX-TREE-45\system\driverset1\AD2Driver\UserAccount</component>
+          <component name="path.xml">
+            <ref>
+              <src>UA</src>
+              <id/>
+              <param>{"ID":"Novdom.com"}</param>
+            </ref>
+          </component>
+        </value>
+      </add-attr>
+      <add-attr attr-name="Full Name">
+        <value timestamp="1418882354#6" type="string">sub6 sub6</value>
+      </add-attr>
+      <add-attr attr-name="Given Name">
+        <value timestamp="1418882354#4" type="string">sub6</value>
+      </add-attr>
+      <add-attr attr-name="nspmDistributionPassword">
+        <!-- content suppressed -->
+      </add-attr>
+      <add-attr attr-name="Surname">
+        <value timestamp="1418882354#3" type="string">sub6</value>
+      </add-attr>
+      <add-attr attr-name="DirXML-ADAliasName">
+        <value type="string">sub6@Novdom.com</value>
+      </add-attr>
+      <add-attr attr-name="CN">
+        <value>sub6</value>
+      </add-attr>
+      <add-attr attr-name="Login Disabled">
+        <value type="string">false</value>
+      </add-attr>
+      <add-attr attr-name="Login Disabled">
+        <value type="state">false</value>
+      </add-attr>
+      <operation-data attempt-to-match="true" drv.domain.container.name="data\users\novdom" drv.domain.dns.name="Novdom.com" drv.pubPlacementType="mirrored" drv.subPlacementType="mirrored" drv.user.container="CN=Users,DC=Novdom,DC=com" unmatched-src-dn="CN=sub6">
+        <mapping-table>
+          <col-def name="entitlementName" type="nocase"/>
+          <col-def name="entitlementValue" type="nocase"/>
+          <col-def name="staticResource" type="nocase"/>
+        </mapping-table>
+        <entitlement-impl id="" name="UserAccount" qualified-src-dn="O=data\OU=users\OU=novdom\CN=sub6" src="UA" src-dn="\SDHAVAL-LINUX-TREE-45\data\users\novdom\sub6" src-entry-id="37325" state="1">{"ID":"Novdom.com"}</entitlement-impl>
+      </operation-data>
+    </add>
+  </input>
+</nds>

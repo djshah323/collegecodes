@@ -1,0 +1,49 @@
+RESTAzure :Applying policy: %+C%14CNOVLRESTAZAD-sub-otp-TranslateToAzure%-C.
+RESTAzure :  Applying to query #1.
+RESTAzure :    Evaluating selection criteria for rule 'azure translate'.
+RESTAzure :      (if-operation match "add|modify|query|delete|modify-password") = TRUE.
+RESTAzure :    Rule selected.
+RESTAzure :    Applying rule 'azure translate'.
+RESTAzure :      Action: do-set-xml-attr("domain-name","../*/driver-operation-data",token-global-variable("drv.domain")).
+RESTAzure :        arg-string(token-global-variable("drv.domain"))
+RESTAzure :          token-global-variable("drv.domain")
+RESTAzure :            Token Value: "".
+RESTAzure :          Arg Value: "".
+RESTAzure :      Action: do-if().
+RESTAzure :        Evaluating conditions.
+RESTAzure :          (if-operation equal "modify-password") = FALSE.
+RESTAzure :        Performing else actions.
+RESTAzure :    Evaluating selection criteria for rule 'set filter on query'.
+RESTAzure :      (if-operation equal "query") = TRUE.
+RESTAzure :      (if-xpath true "../query/driver-operation-data/@filter") = FALSE.
+RESTAzure :    Rule rejected.
+RESTAzure :Policy returned:
+RESTAzure :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product edition="Advanced" version="4.0.2.4">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <query class-name="Users" event-id="0" scope="entry">
+      <association>043fc964-4842-4a71-8312-d8c424123e13</association>
+      <read-attr attr-name="locality"/>
+      <read-attr attr-name="userName"/>
+      <read-attr attr-name="givenName"/>
+      <read-attr attr-name="emails"/>
+      <read-attr attr-name="country"/>
+      <read-attr attr-name="phoneNumbers"/>
+      <read-attr attr-name="password"/>
+      <read-attr attr-name="organization"/>
+      <read-attr attr-name="streetAddress"/>
+      <read-attr attr-name="postalCode"/>
+      <read-attr attr-name="region"/>
+      <read-attr attr-name="familyName"/>
+      <read-attr attr-name="title"/>
+      <read-attr attr-name="employeeNumber"/>
+      <driver-operation-data association="/043fc964-4842-4a71-8312-d8c424123e13?" class-name="Users" command="query" domain-name="">
+        <value content-type="application/json">{"scope":"entry","event-id":"0","class-name":"Users","association":"043fc964-4842-4a71-8312-d8c424123e13","dest-dn":"","read-attr":["locality","userName","givenName","emails","country","phoneNumbers","password","organization","streetAddress","postalCode","region","familyName","title","employeeNumber"]}</value>
+      </driver-operation-data>
+    </query>
+  </input>
+</nds>

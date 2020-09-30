@@ -1,0 +1,43 @@
+Office365 :Applying policy: %+C%14CNOVLOFFIDCFG-itp-Transform%-C.
+Office365 :  Applying to modify #1.
+Office365 :    Evaluating selection criteria for rule 'Reformat UPN Add'.
+Office365 :      (if-xpath true "./add-attr[@attr-name="UserPrincipalName"]") = FALSE.
+Office365 :    Rule rejected.
+Office365 :    Evaluating selection criteria for rule 'Reformat UPN Modify'.
+Office365 :      (if-xpath true "./modify-attr[@attr-name="UserPrincipalName"]") = TRUE.
+Office365 :    Rule selected.
+Office365 :    Applying rule 'Reformat UPN Modify'.
+Office365 :      Action: do-set-local-variable("upn",scope="policy",token-split("@",token-xpath("./modify-attr[@attr-name="UserPrincipalName"]/add-value/value"))).
+Office365 :        arg-string(token-split("@",token-xpath("./modify-attr[@attr-name="UserPrincipalName"]/add-value/value")))
+Office365 :          token-split("@",token-xpath("./modify-attr[@attr-name="UserPrincipalName"]/add-value/value"))
+Office365 :            token-split("@",token-xpath("./modify-attr[@attr-name="UserPrincipalName"]/add-value/value"))
+Office365 :              token-xpath("./modify-attr[@attr-name="UserPrincipalName"]/add-value/value")
+Office365 :                Token Value: "officeeusrp@jramesh.onmicrosoft.com".
+Office365 :              Arg Value: "officeeusrp@jramesh.onmicrosoft.com".
+Office365 :            Token Value: "officeeusrp".
+Office365 :          Arg Value: "officeeusrp".
+Office365 :      Action: do-strip-op-attr("UserPrincipalName").
+Office365 :      Action: do-add-dest-attr-value("UserPrincipalName",token-local-variable("upn")).
+Office365 :        arg-string(token-local-variable("upn"))
+Office365 :          token-local-variable("upn")
+Office365 :            Token Value: "officeeusrp".
+Office365 :          Arg Value: "officeeusrp".
+Office365 :Policy returned:
+Office365 :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product edition="Advanced" version="4.0.2.0">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <modify class-name="User" dest-dn="\ORION-E2E-TREE\data\users\officeeusrp" dest-entry-id="45647" event-id="rj-idmdt-192#20120831085853#99#1:bf6952a6-c361-4674-428c-a65269bf61c3" from-merge="true">
+      <association>c2db5b55-2589-41b9-bb6c-0abb7ac6d0ee</association>
+      <operation-data/>
+      <modify-attr attr-name="UserPrincipalName">
+        <add-value>
+          <value type="string">officeeusrp</value>
+        </add-value>
+      </modify-attr>
+    </modify>
+  </input>
+</nds>

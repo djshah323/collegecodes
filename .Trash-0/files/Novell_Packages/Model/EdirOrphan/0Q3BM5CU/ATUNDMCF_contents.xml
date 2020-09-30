@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Last name of submitter" item-name="submitterLastName"/>
+		<form:token-description description="First name of submitter" item-name="submitterFirstName"/>
+		<form:token-description description="Last name of a user the assignment corresponds to" item-name="userLastName"/>
+		<form:token-description description="First name of a user the assignment corresponds to" item-name="userFirstName"/>
+		<form:token-description description="Assignment effective time" item-name="startTime"/>
+		<form:token-description description="Assignment expiration time" item-name="expirationTime"/>
+		<form:token-description description="List of provisioning definition resources this assignment applies to" item-name="resources"/>
+		<form:token-description description="The protocol to the provisioning user application.  Typically 'http'." item-name="PROTOCOL"/>
+		<form:token-description description="The secure protocol to the provisioning user application.  Typically 'https'." item-name="SECURE_PROTOCOL"/>
+		<form:token-description description="The host name of the provisioning user application." item-name="HOST"/>
+		<form:token-description description="The port to the provisioning user application." item-name="PORT"/>
+		<form:token-description description="The secure port to the provisioning user application." item-name="SECURE_PORT"/>
+		<form:token-description description="The context/path of the URL to the provisioning user application to get a list of availability assignments." item-name="ASSIGNMENT_LIST_CONTEXT"/>
+	</form:token-descriptions>
+  Hallo,
+$submitterFirstName$ $submitterLastName$ heeft de beschikbaarheidsinstellingen $userFirstName$ $userLastName$ bijgewerkt.
+Deze gebruiker heeft $operation$ een beschikbaarheidsinstelling die van toepassing is op de volgende bronnen:
+  $resources$
+Deze instelling duidt erop dat $userFirstName$ $userLastName$ tijdens de onderstaande periode niet beschikbaar is om aan deze bronnen te werken:
+  Starttijd: $startTime$
+  Verlooptijdstip: $expirationTime$
+Wanneer een gebruiker niet beschikbaar is, kan de toegewezen gedelegeerde de resourceaanvragen voor de gebruiker afhandelen.
+Voor een overzicht van uw beschikbaarheidsinstellingen gaat u naar $PROTOCOL$://$HOST$:$PORT$/$AVAILABILITY_CONTEXT$.
+      
+</form:text>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Request name" item-name="requestTitle"/>
+		<form:token-description description="Request identifier" item-name="requestId"/>
+		<form:token-description description="Request submission time" item-name="requestSubmissionTime"/>
+		<form:token-description description="Submitted by" item-name="initiatorFullName"/>
+		<form:token-description description="Recipient's full name" item-name="recipientFullName"/>
+		<form:token-description description="Initiator's full name" item-name="initiatorFullName"/>
+		<form:token-description description="Status of the request" item-name="requestStatus"/>
+	</form:token-descriptions> 
+您好，此訊息是由下述之提供申請的「通知活動」所傳送。申請名稱：$requestTitle$ 申請 ID：$requestId$ 提交人：$initiatorFullName$ 提交日期：$requestSubmissionTime$ 收件人：$recipientFullName$ 狀態：$requestStatus$
+</form:text>

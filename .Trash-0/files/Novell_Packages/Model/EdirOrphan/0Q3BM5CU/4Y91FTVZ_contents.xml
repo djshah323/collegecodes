@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Request name" item-name="requestTitle"/>
+		<form:token-description description="Request identifier" item-name="requestId"/>
+		<form:token-description description="Request submission time" item-name="requestSubmissionTime"/>
+		<form:token-description description="Submitted by" item-name="initiatorFullName"/>
+		<form:token-description description="Recipient's full name" item-name="recipientFullName"/>
+		<form:token-description description="Initiator's full name" item-name="initiatorFullName"/>
+		<form:token-description description="Status of the request" item-name="requestStatus"/>
+	</form:token-descriptions> 
+あなたのプロビジョニング要求の承認処理は完了しました。
+
+要求名: $requestTitle$
+要求ID: $requestId$
+送信者: $initiatorFullName$
+送信日時: $requestSubmissionTime$
+受信者: $recipientFullName$
+
+ステータス: $requestStatus$
+</form:text>

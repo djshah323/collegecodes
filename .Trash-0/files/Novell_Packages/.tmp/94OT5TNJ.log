@@ -1,0 +1,363 @@
+ADJade :Applying policy: %+C%14CNOVLADATRK-otp-Subscribe%-C.
+ADJade :  Applying to modify #1.
+ADJade :    Evaluating selection criteria for rule 'test'.
+ADJade :    Rule selected.
+ADJade :    Applying rule 'test'.
+ADJade :      Action: do-for-each(arg-node-set(token-global-variable("drv.acctTrk.identifiers"))).
+ADJade :        arg-node-set(token-global-variable("drv.acctTrk.identifiers"))
+ADJade :          token-global-variable("drv.acctTrk.identifiers")
+ADJade :          Token Value: {"sAMAccountName","userPrincipalName","LDAPDN","association"}.
+ADJade :          Arg Value: {"sAMAccountName","userPrincipalName","LDAPDN","association"}.
+ADJade :        Performing actions for local-variable(current-node) = "sAMAccountName".
+ADJade :          Action: do-set-local-variable("queryAttr",scope="policy",arg-node-set(token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$"))).
+ADJade :            arg-node-set(token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$"))
+ADJade :              token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$")
+ADJade :                arg-association(token-association())
+ADJade :                  token-association()
+ADJade :                    Token Value: "3e04795cc744c8498fe87f54338cc958".
+ADJade :                  Arg Value: "3e04795cc744c8498fe87f54338cc958".
+ADJade :                arg-string("$current-node$")
+ADJade :                  token-text("$current-node$")
+ADJade :                    Expanded variable reference '$current-node$' to 'sAMAccountName'.
+ADJade :                  Arg Value: "sAMAccountName".
+ADJade :                Query from policy
+ADJade :                
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="?.?.?.?">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <query class-name="user" scope="entry">
+      <association>3e04795cc744c8498fe87f54338cc958</association>
+      <read-attr attr-name="sAMAccountName"/>
+    </query>
+  </input>
+</nds>
+ADJade :                Query from policy result
+ADJade :                
+<nds dtdversion="1.1" ndsversion="8.7">
+  <source>
+    <product asn1id="" build="20130702_120000" instance="\KPHAL\system\driverset1\ADJade" version="4.0.0.2">AD</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <output>
+    <instance class-name="user" event-id="0" src-dn="CN=Tom3,OU=eDir,DC=NovDom,DC=com">
+      <association>3e04795cc744c8498fe87f54338cc958</association>
+      <attr attr-name="sAMAccountName">
+        <value naming="true" type="string">Tom3</value>
+      </attr>
+    </instance>
+    <status event-id="0" level="success"/>
+  </output>
+</nds>
+ADJade :              Token Value: {<instance> @class-name = "user" @event-id = "0" @src-dn = "CN=Tom3,OU=eDir,DC=NovDom,DC=com"}.
+ADJade :              Arg Value: {<instance> @class-name = "user" @event-id = "0" @src-dn = "CN=Tom3,OU=eDir,DC=NovDom,DC=com"}.
+ADJade :          Action: do-set-local-variable("xml",scope="policy",token-xml-serialize(token-local-variable("current-node"))).
+ADJade :            arg-string(token-xml-serialize(token-local-variable("current-node")))
+ADJade :              token-xml-serialize(token-local-variable("current-node"))
+ADJade :                token-xml-serialize(token-local-variable("current-node"))
+ADJade :                  token-local-variable("current-node")
+ADJade :                  Token Value: {"sAMAccountName"}.
+ADJade :                  Arg Value: {"sAMAccountName"}.
+ADJade :                Token Value: "sAMAccountName".
+ADJade :              Arg Value: "sAMAccountName".
+ADJade :          Action: do-trace-message(token-local-variable("xml")).
+ADJade :            arg-string(token-local-variable("xml"))
+ADJade :              token-local-variable("xml")
+ADJade :                Token Value: "sAMAccountName".
+ADJade :              Arg Value: "sAMAccountName".
+ADJade :sAMAccountName
+ADJade :          Action: do-if().
+ADJade :            Evaluating conditions.
+ADJade :              (if-xpath true "$queryAttr/attr[@attr-name="sAMAccountName"]") = TRUE.
+ADJade :            Performing if actions.
+ADJade :              Action: do-trace-message("AccountTracking - Tracking account identifier $current-node$ for object "+token-src-name()).
+ADJade :                arg-string("AccountTracking - Tracking account identifier $current-node$ for object "+token-src-name())
+ADJade :                  token-text("AccountTracking - Tracking account identifier $current-node$ for object ")
+ADJade :                    Expanded variable reference '$current-node$' to 'sAMAccountName'.
+ADJade :                  token-src-name()
+ADJade :                    Token Value: "Tom3".
+ADJade :                  Arg Value: "AccountTracking - Tracking account identifier sAMAccountName for object Tom3".
+ADJade :AccountTracking - Tracking account identifier sAMAccountName for object Tom3
+ADJade :              Action: do-set-op-property("AccountTracking-$current-node$",token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()")).
+ADJade :                Expanded variable reference '$current-node$' to 'sAMAccountName'.
+ADJade :                arg-string(token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()"))
+ADJade :                  token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()")
+ADJade :                    Token Value: "".
+ADJade :                  Arg Value: "".
+ADJade :              Action: do-set-local-variable("addObjectDN",scope="policy","true").
+ADJade :                arg-string("true")
+ADJade :                  token-text("true")
+ADJade :                  Arg Value: "true".
+ADJade :        Performing actions for local-variable(current-node) = "userPrincipalName".
+ADJade :          Action: do-set-local-variable("queryAttr",scope="policy",arg-node-set(token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$"))).
+ADJade :            arg-node-set(token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$"))
+ADJade :              token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$")
+ADJade :                arg-association(token-association())
+ADJade :                  token-association()
+ADJade :                    Token Value: "3e04795cc744c8498fe87f54338cc958".
+ADJade :                  Arg Value: "3e04795cc744c8498fe87f54338cc958".
+ADJade :                arg-string("$current-node$")
+ADJade :                  token-text("$current-node$")
+ADJade :                    Expanded variable reference '$current-node$' to 'userPrincipalName'.
+ADJade :                  Arg Value: "userPrincipalName".
+ADJade :                Query from policy
+ADJade :                
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="?.?.?.?">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <query class-name="user" scope="entry">
+      <association>3e04795cc744c8498fe87f54338cc958</association>
+      <read-attr attr-name="userPrincipalName"/>
+    </query>
+  </input>
+</nds>
+ADJade :                Query from policy result
+ADJade :                
+<nds dtdversion="1.1" ndsversion="8.7">
+  <source>
+    <product asn1id="" build="20130702_120000" instance="\KPHAL\system\driverset1\ADJade" version="4.0.0.2">AD</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <output>
+    <instance class-name="user" event-id="0" src-dn="CN=Tom3,OU=eDir,DC=NovDom,DC=com">
+      <association>3e04795cc744c8498fe87f54338cc958</association>
+      <attr attr-name="sAMAccountName">
+        <value naming="true" type="string">Tom3</value>
+      </attr>
+    </instance>
+    <status event-id="0" level="success"/>
+  </output>
+</nds>
+ADJade :              Token Value: {<instance> @class-name = "user" @event-id = "0" @src-dn = "CN=Tom3,OU=eDir,DC=NovDom,DC=com"}.
+ADJade :              Arg Value: {<instance> @class-name = "user" @event-id = "0" @src-dn = "CN=Tom3,OU=eDir,DC=NovDom,DC=com"}.
+ADJade :          Action: do-set-local-variable("xml",scope="policy",token-xml-serialize(token-local-variable("current-node"))).
+ADJade :            arg-string(token-xml-serialize(token-local-variable("current-node")))
+ADJade :              token-xml-serialize(token-local-variable("current-node"))
+ADJade :                token-xml-serialize(token-local-variable("current-node"))
+ADJade :                  token-local-variable("current-node")
+ADJade :                  Token Value: {"userPrincipalName"}.
+ADJade :                  Arg Value: {"userPrincipalName"}.
+ADJade :                Token Value: "userPrincipalName".
+ADJade :              Arg Value: "userPrincipalName".
+ADJade :          Action: do-trace-message(token-local-variable("xml")).
+ADJade :            arg-string(token-local-variable("xml"))
+ADJade :              token-local-variable("xml")
+ADJade :                Token Value: "userPrincipalName".
+ADJade :              Arg Value: "userPrincipalName".
+ADJade :userPrincipalName
+ADJade :          Action: do-if().
+ADJade :            Evaluating conditions.
+ADJade :              (if-xpath true "$queryAttr/attr[@attr-name="sAMAccountName"]") = TRUE.
+ADJade :            Performing if actions.
+ADJade :              Action: do-trace-message("AccountTracking - Tracking account identifier $current-node$ for object "+token-src-name()).
+ADJade :                arg-string("AccountTracking - Tracking account identifier $current-node$ for object "+token-src-name())
+ADJade :                  token-text("AccountTracking - Tracking account identifier $current-node$ for object ")
+ADJade :                    Expanded variable reference '$current-node$' to 'userPrincipalName'.
+ADJade :                  token-src-name()
+ADJade :                    Token Value: "Tom3".
+ADJade :                  Arg Value: "AccountTracking - Tracking account identifier userPrincipalName for object Tom3".
+ADJade :AccountTracking - Tracking account identifier userPrincipalName for object Tom3
+ADJade :              Action: do-set-op-property("AccountTracking-$current-node$",token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()")).
+ADJade :                Expanded variable reference '$current-node$' to 'userPrincipalName'.
+ADJade :                arg-string(token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()"))
+ADJade :                  token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()")
+ADJade :                    Token Value: "".
+ADJade :                  Arg Value: "".
+ADJade :              Action: do-set-local-variable("addObjectDN",scope="policy","true").
+ADJade :                arg-string("true")
+ADJade :                  token-text("true")
+ADJade :                  Arg Value: "true".
+ADJade :        Performing actions for local-variable(current-node) = "LDAPDN".
+ADJade :          Action: do-set-local-variable("queryAttr",scope="policy",arg-node-set(token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$"))).
+ADJade :            arg-node-set(token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$"))
+ADJade :              token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$")
+ADJade :                arg-association(token-association())
+ADJade :                  token-association()
+ADJade :                    Token Value: "3e04795cc744c8498fe87f54338cc958".
+ADJade :                  Arg Value: "3e04795cc744c8498fe87f54338cc958".
+ADJade :                arg-string("$current-node$")
+ADJade :                  token-text("$current-node$")
+ADJade :                    Expanded variable reference '$current-node$' to 'LDAPDN'.
+ADJade :                  Arg Value: "LDAPDN".
+ADJade :                Query from policy
+ADJade :                
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="?.?.?.?">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <query class-name="user" scope="entry">
+      <association>3e04795cc744c8498fe87f54338cc958</association>
+      <read-attr attr-name="LDAPDN"/>
+    </query>
+  </input>
+</nds>
+ADJade :                Query from policy result
+ADJade :                
+<nds dtdversion="1.1" ndsversion="8.7">
+  <source>
+    <product asn1id="" build="20130702_120000" instance="\KPHAL\system\driverset1\ADJade" version="4.0.0.2">AD</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <output>
+    <instance class-name="user" event-id="0" src-dn="CN=Tom3,OU=eDir,DC=NovDom,DC=com">
+      <association>3e04795cc744c8498fe87f54338cc958</association>
+      <attr attr-name="sAMAccountName">
+        <value naming="true" type="string">Tom3</value>
+      </attr>
+    </instance>
+    <status event-id="0" level="success"/>
+  </output>
+</nds>
+ADJade :              Token Value: {<instance> @class-name = "user" @event-id = "0" @src-dn = "CN=Tom3,OU=eDir,DC=NovDom,DC=com"}.
+ADJade :              Arg Value: {<instance> @class-name = "user" @event-id = "0" @src-dn = "CN=Tom3,OU=eDir,DC=NovDom,DC=com"}.
+ADJade :          Action: do-set-local-variable("xml",scope="policy",token-xml-serialize(token-local-variable("current-node"))).
+ADJade :            arg-string(token-xml-serialize(token-local-variable("current-node")))
+ADJade :              token-xml-serialize(token-local-variable("current-node"))
+ADJade :                token-xml-serialize(token-local-variable("current-node"))
+ADJade :                  token-local-variable("current-node")
+ADJade :                  Token Value: {"LDAPDN"}.
+ADJade :                  Arg Value: {"LDAPDN"}.
+ADJade :                Token Value: "LDAPDN".
+ADJade :              Arg Value: "LDAPDN".
+ADJade :          Action: do-trace-message(token-local-variable("xml")).
+ADJade :            arg-string(token-local-variable("xml"))
+ADJade :              token-local-variable("xml")
+ADJade :                Token Value: "LDAPDN".
+ADJade :              Arg Value: "LDAPDN".
+ADJade :LDAPDN
+ADJade :          Action: do-if().
+ADJade :            Evaluating conditions.
+ADJade :              (if-xpath true "$queryAttr/attr[@attr-name="sAMAccountName"]") = TRUE.
+ADJade :            Performing if actions.
+ADJade :              Action: do-trace-message("AccountTracking - Tracking account identifier $current-node$ for object "+token-src-name()).
+ADJade :                arg-string("AccountTracking - Tracking account identifier $current-node$ for object "+token-src-name())
+ADJade :                  token-text("AccountTracking - Tracking account identifier $current-node$ for object ")
+ADJade :                    Expanded variable reference '$current-node$' to 'LDAPDN'.
+ADJade :                  token-src-name()
+ADJade :                    Token Value: "Tom3".
+ADJade :                  Arg Value: "AccountTracking - Tracking account identifier LDAPDN for object Tom3".
+ADJade :AccountTracking - Tracking account identifier LDAPDN for object Tom3
+ADJade :              Action: do-set-op-property("AccountTracking-$current-node$",token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()")).
+ADJade :                Expanded variable reference '$current-node$' to 'LDAPDN'.
+ADJade :                arg-string(token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()"))
+ADJade :                  token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()")
+ADJade :                    Token Value: "".
+ADJade :                  Arg Value: "".
+ADJade :              Action: do-set-local-variable("addObjectDN",scope="policy","true").
+ADJade :                arg-string("true")
+ADJade :                  token-text("true")
+ADJade :                  Arg Value: "true".
+ADJade :        Performing actions for local-variable(current-node) = "association".
+ADJade :          Action: do-set-local-variable("queryAttr",scope="policy",arg-node-set(token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$"))).
+ADJade :            arg-node-set(token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$"))
+ADJade :              token-query(class-name="user",scope="entry",arg-association(token-association()),"$current-node$")
+ADJade :                arg-association(token-association())
+ADJade :                  token-association()
+ADJade :                    Token Value: "3e04795cc744c8498fe87f54338cc958".
+ADJade :                  Arg Value: "3e04795cc744c8498fe87f54338cc958".
+ADJade :                arg-string("$current-node$")
+ADJade :                  token-text("$current-node$")
+ADJade :                    Expanded variable reference '$current-node$' to 'association'.
+ADJade :                  Arg Value: "association".
+ADJade :                Query from policy
+ADJade :                
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="?.?.?.?">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <query class-name="user" scope="entry">
+      <association>3e04795cc744c8498fe87f54338cc958</association>
+      <read-attr attr-name="association"/>
+    </query>
+  </input>
+</nds>
+ADJade :                Query from policy result
+ADJade :                
+<nds dtdversion="1.1" ndsversion="8.7">
+  <source>
+    <product asn1id="" build="20130702_120000" instance="\KPHAL\system\driverset1\ADJade" version="4.0.0.2">AD</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <output>
+    <instance class-name="user" event-id="0" src-dn="CN=Tom3,OU=eDir,DC=NovDom,DC=com">
+      <association>3e04795cc744c8498fe87f54338cc958</association>
+      <attr attr-name="sAMAccountName">
+        <value naming="true" type="string">Tom3</value>
+      </attr>
+    </instance>
+    <status event-id="0" level="success"/>
+  </output>
+</nds>
+ADJade :              Token Value: {<instance> @class-name = "user" @event-id = "0" @src-dn = "CN=Tom3,OU=eDir,DC=NovDom,DC=com"}.
+ADJade :              Arg Value: {<instance> @class-name = "user" @event-id = "0" @src-dn = "CN=Tom3,OU=eDir,DC=NovDom,DC=com"}.
+ADJade :          Action: do-set-local-variable("xml",scope="policy",token-xml-serialize(token-local-variable("current-node"))).
+ADJade :            arg-string(token-xml-serialize(token-local-variable("current-node")))
+ADJade :              token-xml-serialize(token-local-variable("current-node"))
+ADJade :                token-xml-serialize(token-local-variable("current-node"))
+ADJade :                  token-local-variable("current-node")
+ADJade :                  Token Value: {"association"}.
+ADJade :                  Arg Value: {"association"}.
+ADJade :                Token Value: "association".
+ADJade :              Arg Value: "association".
+ADJade :          Action: do-trace-message(token-local-variable("xml")).
+ADJade :            arg-string(token-local-variable("xml"))
+ADJade :              token-local-variable("xml")
+ADJade :                Token Value: "association".
+ADJade :              Arg Value: "association".
+ADJade :association
+ADJade :          Action: do-if().
+ADJade :            Evaluating conditions.
+ADJade :              (if-xpath true "$queryAttr/attr[@attr-name="sAMAccountName"]") = TRUE.
+ADJade :            Performing if actions.
+ADJade :              Action: do-trace-message("AccountTracking - Tracking account identifier $current-node$ for object "+token-src-name()).
+ADJade :                arg-string("AccountTracking - Tracking account identifier $current-node$ for object "+token-src-name())
+ADJade :                  token-text("AccountTracking - Tracking account identifier $current-node$ for object ")
+ADJade :                    Expanded variable reference '$current-node$' to 'association'.
+ADJade :                  token-src-name()
+ADJade :                    Token Value: "Tom3".
+ADJade :                  Arg Value: "AccountTracking - Tracking account identifier association for object Tom3".
+ADJade :AccountTracking - Tracking account identifier association for object Tom3
+ADJade :              Action: do-set-op-property("AccountTracking-$current-node$",token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()")).
+ADJade :                Expanded variable reference '$current-node$' to 'association'.
+ADJade :                arg-string(token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()"))
+ADJade :                  token-xpath("$queryAttr/attr[@attr-name="userPrincipalName"]/value/text()")
+ADJade :                    Token Value: "".
+ADJade :                  Arg Value: "".
+ADJade :              Action: do-set-local-variable("addObjectDN",scope="policy","true").
+ADJade :                arg-string("true")
+ADJade :                  token-text("true")
+ADJade :                  Arg Value: "true".
+ADJade :Policy returned:
+ADJade :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="?.?.?.?">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <modify class-name="user" event-id="linux-djs#20140424113228#1#1:138c2554-9e4f-4a4b-018a-54258c134f9e" from-merge="true" qualified-src-dn="O=data\OU=users\CN=Tom3" src-dn="\KPHAL\data\users\Tom3" src-entry-id="34574">
+      <association>3e04795cc744c8498fe87f54338cc958</association>
+      <modify-attr attr-name="title">
+        <add-value>
+          <value timestamp="1398339148#3" type="string">d</value>
+        </add-value>
+      </modify-attr>
+      <modify-attr attr-name="accountExpires">
+        <remove-all-values/>
+        <add-value>
+          <value timestamp="1398265671#2" type="time">-1</value>
+        </add-value>
+      </modify-attr>
+      <operation-data AccountTracking-LDAPDN="" AccountTracking-association="" AccountTracking-sAMAccountName="" AccountTracking-userPrincipalName="" attempt-to-match="true" unmatched-src-dn="CN=Tom3"/>
+    </modify>
+  </input>
+</nds>

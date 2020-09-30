@@ -1,0 +1,32 @@
+ADJade :Applying policy: %+C%14CNOVLADENTEX-pub-etp-EntitlementsImpl%-C.
+ADJade :  Applying to sync #1.
+ADJade :    Evaluating selection criteria for rule 'test'.
+ADJade :    Rule selected.
+ADJade :    Applying rule 'test'.
+ADJade :      Action: do-set-local-variable("destdn",scope="policy",token-parse-dn(dest-dn-format="slash",src-dn-format="ldap",token-replace-first("$drv.user.container$","",token-unmatched-src-dn(convert="false")))).
+ADJade :        arg-string(token-parse-dn(dest-dn-format="slash",src-dn-format="ldap",token-replace-first("$drv.user.container$","",token-unmatched-src-dn(convert="false"))))
+ADJade :          token-parse-dn(dest-dn-format="slash",src-dn-format="ldap",token-replace-first("$drv.user.container$","",token-unmatched-src-dn(convert="false")))
+ADJade :            token-parse-dn(dest-dn-format="slash",src-dn-format="ldap",token-replace-first("$drv.user.container$","",token-unmatched-src-dn(convert="false")))
+ADJade :              token-replace-first("$drv.user.container$","",token-unmatched-src-dn(convert="false"))
+ADJade :                Expanded variable reference '$drv.user.container$' to 'CN=Users,DC=NovDom,DC=com'.
+ADJade :                token-replace-first("$drv.user.container$","",token-unmatched-src-dn(convert="false"))
+ADJade :                  token-unmatched-src-dn(convert="false")
+ADJade :                    Token Value: "CN=dave1,OU=edir,DC=NovDom,DC=com".
+ADJade :                  Arg Value: "CN=dave1,OU=edir,DC=NovDom,DC=com".
+ADJade :                Token Value: "CN=dave1,OU=edir,DC=NovDom,DC=com".
+ADJade :              Arg Value: "CN=dave1,OU=edir,DC=NovDom,DC=com".
+ADJade :            Token Value: "com\NovDom\edir\dave1".
+ADJade :          Arg Value: "com\NovDom\edir\dave1".
+ADJade :Policy returned:
+ADJade :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="?.?.?.?">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <sync class-name="User" event-id="migrate-app-sync-1" src-dn="CN=dave1,OU=edir,DC=NovDom,DC=com">
+      <association>907158883d30e349af9b89a6d612305e</association>
+    </sync>
+  </input>
+</nds>

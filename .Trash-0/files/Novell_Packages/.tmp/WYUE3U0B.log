@@ -1,0 +1,69 @@
+AD :Applying policy: %+C%14CNOVLADDCFG-sub-mp%-C.
+AD :  Applying to add #1.
+AD :    Evaluating selection criteria for rule 'veto out-of-scope events'.
+AD :      (if-op-property 'attempt-to-match' not-available) = FALSE.
+AD :      (if-op-property 'attempt-to-match' equal "false") = FALSE.
+AD :    Rule rejected.
+AD :    Evaluating selection criteria for rule 'generate full name if not in Identity Vault'.
+AD :      (if-class-name equal "User") = TRUE.
+AD :      (if-global-variable 'FullNameMap' equal "true") = TRUE.
+AD :      (if-attr 'Full Name' not-available) = FALSE.
+AD :    Rule rejected.
+AD :    Evaluating selection criteria for rule 'match users based on NT logon name'.
+AD :      (if-class-name equal "User") = TRUE.
+AD :      (if-global-variable 'LogonNameMap' equal "true") = TRUE.
+AD :    Rule selected.
+AD :    Applying rule 'match users based on NT logon name'.
+AD :      Action: do-for-each(arg-node-set(token-global-variable("drv.domains"))).
+AD :        arg-node-set(token-global-variable("drv.domains"))
+AD :          token-global-variable("drv.domains")
+AD :          Token Value: {<instance>,<instance>}.
+AD :          Arg Value: {<instance>,<instance>}.
+AD :        Performing actions for local-variable(current-node) = <instance>.
+AD :          Action: do-set-local-variable("user_container",scope="policy",token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")).
+AD :            arg-string(token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()"))
+AD :              token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")
+AD :                Token Value: "CN=users,DC=novdom,DC=com".
+AD :              Arg Value: "CN=users,DC=novdom,DC=com".
+AD :          Action: do-find-matching-object(scope="subtree",arg-dn(token-local-variable("user_container")),arg-match-attr("CN",token-replace-all("[^a-zA-Z0-9\x21\x23-\x29\x2d\x2e\x40\x5e-\x60\x7b\x7d\x7e\xc0-\xf6\xf8-\xff\u0410-\u044f]","",token-src-name()))).
+AD :            arg-dn(token-local-variable("user_container"))
+AD :              token-local-variable("user_container")
+AD :                Token Value: "CN=users,DC=novdom,DC=com".
+AD :              Arg Value: "CN=users,DC=novdom,DC=com".
+AD :            arg-match-attr("CN",token-replace-all("[^a-zA-Z0-9\x21\x23-\x29\x2d\x2e\x40\x5e-\x60\x7b\x7d\x7e\xc0-\xf6\xf8-\xff\u0410-\u044f]","",token-src-name()))
+AD :              arg-string(token-replace-all("[^a-zA-Z0-9\x21\x23-\x29\x2d\x2e\x40\x5e-\x60\x7b\x7d\x7e\xc0-\xf6\xf8-\xff\u0410-\u044f]","",token-src-name()))
+AD :                token-replace-all("[^a-zA-Z0-9\x21\x23-\x29\x2d\x2e\x40\x5e-\x60\x7b\x7d\x7e\xc0-\xf6\xf8-\xff\u0410-\u044f]","",token-src-name())
+AD :                  token-replace-all("[^a-zA-Z0-9\x21\x23-\x29\x2d\x2e\x40\x5e-\x60\x7b\x7d\x7e\xc0-\xf6\xf8-\xff\u0410-\u044f]","",token-src-name())
+AD :                    token-src-name()
+AD :                      Token Value: "user1".
+AD :                    Arg Value: "user1".
+AD :                  Token Value: "user1".
+AD :                Arg Value: "user1".
+AD :            Query from policy
+AD :            
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="4.0.2.4">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <query class-name="User" dest-dn="CN=users,DC=novdom,DC=com" scope="subtree">
+      <search-class class-name="User"/>
+      <search-attr attr-name="CN">
+        <value type="string">user1</value>
+      </search-attr>
+      <read-attr/>
+    </query>
+  </input>
+</nds>
+AD :            Query from policy result
+AD :            
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="4.0.2.4">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <output>
+    <instance/>
+  </output>
+</nds>

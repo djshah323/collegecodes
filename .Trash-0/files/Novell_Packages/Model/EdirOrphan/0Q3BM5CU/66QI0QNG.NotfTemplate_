@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.novell.designer.model:CObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.novell.designer.model="http://com.novell.designer.model" name="Availability_pt">
+  <attributes xsi:type="com.novell.designer.model:CHeavyData" attrName="contents"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="notfMergeTemplateSubject" value="Notificação de Configuração de Disponibilidade"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="Idm:PackageAssocGuid" value="HGL7XJGH_201007271207160401"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="Idm:PackageGuid" value="HFKOI38M_201007271206250496"/>
+  <attributes xsi:type="com.novell.designer.model:CLong" attrName="Idm:ContentChecksum" value="2513916979"/>
+</com.novell.designer.model:CObject>

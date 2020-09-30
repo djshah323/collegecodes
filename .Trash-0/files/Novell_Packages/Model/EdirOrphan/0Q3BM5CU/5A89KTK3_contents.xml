@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Password hint" item-name="Hint"/>
+		<form:token-description description="User full name" item-name="UserFullName"/>
+	</form:token-descriptions>
+	<head>
+		<title>Richiesta di suggerimento password</title>
+		<style>
+			<!-- body { font-family: Trebuchet MS } -->
+		</style>
+	</head>
+	<body BGCOLOR="#FFFFFF">
+		<p>Gentile $NomeCompletoUtente$,</p>
+		<p>in seguito alla sua richiesta di ricevere via e-mail il suggerimento per la password, le comunichiamo di seguito il suggerimento:</p>
+		<p>Suggerimento: $Suggerimento$</p>
+		<p>Se non ha richiesto di ricevere il suggerimento via e-mail, contattare l'help desk al numero (012) 345-6789 oppure all'indirizzo e-mail: <a href="mailto:help.desk@mycompany.com">help.desk@mycompany.com</a>
+		</p>
+		<p> - Sicurezza automatica</p>
+		<p>
+			<img ALT="Powered by Novell" SRC="cid:powered_by_novell.gif" height="29" width="80"/>
+		</p>
+	</body>
+</html>

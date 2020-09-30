@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><com.novell.idm.model:Project cprojectURI="Novell_Packages/Novell_Packages.cproj" domainURI="IdentityManager/LZI7VUVG.domain" guid="PYINIKLX" name="Novell_Packages" productID="4.0" type="Project" version="4.0" xmlns:com.novell.idm.model="http://com.novell.idm.model">
+  <modelerNodes href="Model/IdentityManager/JP7H10JZ.ModelerNodes_#/"/>
+  <adapterProject href="Novell_Packages.cproj#/"/>
+</com.novell.idm.model:Project>

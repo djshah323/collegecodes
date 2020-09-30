@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Password hint" item-name="Hint"/>
+		<form:token-description description="User full name" item-name="UserFullName"/>
+	</form:token-descriptions>
+	<head>
+		<title>Opvragen van uw wachtwoordsuggestie</title>
+		<style>
+			<!-- body { font-family: Trebuchet MS } -->
+		</style>
+	</head>
+	<body BGCOLOR="#FFFFFF">
+		<p>Beste$UserFullName$,</p>
+		<p>U hebt ons gevraagd om u de wachtwoordsuggestie te e-mailen. De wachtwoordsuggestie
+     vindt u hieronder:</p>
+		<p>Wachtwoordsuggestie: $Suggestie$</p>
+		<p>Als u geen verzoek hebt ingediend om de suggestie naar u te e-mailen, neemt u contact op met de
+     helpdesk op (012) 345-6789 of stuurt u een e-mail naar
+     <a href="mailto:help.desk@mycompany.com">help.desk@mycompany.com</a>
+		</p>
+		<p> - Automated Security</p>
+		<p>
+			<img ALT="Powered by Novell" SRC="cid:powered_by_novell.gif" height="29" width="80"/>
+		</p>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+AD2Driver :Applying policy: %+C%14CNETQMADENTEX-sub-etp-HandleEntitlementMoves%-C.
+AD2Driver :  Applying to modify #1.
+AD2Driver :    Evaluating selection criteria for rule 'check cross domain move'.
+AD2Driver :      (if-entitlement 'UserAccount' changing) = TRUE.
+AD2Driver :    Rule selected.
+AD2Driver :    Applying rule 'check cross domain move'.
+AD2Driver :      Action: do-set-local-variable("removedDomain",scope="policy",arg-node-set(token-removed-entitlement("UserAccount"))).
+AD2Driver :        arg-node-set(token-removed-entitlement("UserAccount"))
+AD2Driver :          token-removed-entitlement("UserAccount")
+AD2Driver :          Token Value: {}.
+AD2Driver :          Arg Value: {}.
+AD2Driver :Policy returned:
+AD2Driver :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product edition="Advanced" version="4.0.2.10">DirXML</product>
+    <contact>NetIQ Corporation</contact>
+  </source>
+  <input>
+    <modify cached-time="20141230052641.187Z" class-name="User" event-id="linux-yal5#20141230052641#1#3:c691c5e9-e0d0-4130-4884-e9c591c6d0e0" qualified-src-dn="O=data\OU=users\OU=netq\CN=Sukh1" src-dn="\SDHAVAL-LINUX-TREE-45\data\users\netq\Sukh1" src-entry-id="37456" timestamp="1419917201#4">
+      <association state="associated">NETQ#3c55dd699dfeff418bea3c458037b8e3</association>
+      <modify-attr attr-name="DirXML-EntitlementRef">
+        <remove-value>
+          <value timestamp="1419914110#5" type="structured">
+            <component name="nameSpace">1</component>
+            <component name="volume">\SDHAVAL-LINUX-TREE-45\system\driverset1\AD2Driver\UserAccount</component>
+            <component name="path.xml">
+              <ref>
+                <src>UA</src>
+                <id/>
+                <param>{"ID":"NetQ.com"}</param>
+              </ref>
+            </component>
+          </value>
+        </remove-value>
+        <add-value>
+          <value timestamp="1419917201#4" type="structured">
+            <component name="nameSpace">1</component>
+            <component name="volume">\SDHAVAL-LINUX-TREE-45\system\driverset1\AD2Driver\UserAccount</component>
+            <component name="path.xml">
+              <ref>
+                <src>UA</src>
+                <id/>
+                <param>{"ID":"Novdom.com"}</param>
+              </ref>
+            </component>
+          </value>
+        </add-value>
+      </modify-attr>
+      <modify-attr attr-name="Login Disabled">
+        <remove-all-values/>
+        <add-value>
+          <value type="state">false</value>
+        </add-value>
+      </modify-attr>
+      <operation-data accountAction="accountEnableByEntitlementGrant" association="NETQ#3c55dd699dfeff418bea3c458037b8e3" guid="er2ht4iWAUKmsXq9obeIlg==" objectClass="User" sourceDN="\SDHAVAL-LINUX-TREE-45\data\users\netq\Sukh1">
+        <entitlement-impl id="" name="UserAccount" qualified-src-dn="O=data\OU=users\OU=netq\CN=Sukh1" src="UA" src-dn="\SDHAVAL-LINUX-TREE-45\data\users\netq\Sukh1" src-entry-id="37456" state="1">{"ID":"Novdom.com"}</entitlement-impl>
+      </operation-data>
+    </modify>
+  </input>
+</nds>

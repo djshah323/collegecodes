@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="The user's full name" item-name="UserFullName"/>
+		<form:token-description description="The user's given name" item-name="UserGivenName"/>
+		<form:token-description description="The user's last name" item-name="UserLastName"/>
+		<form:token-description description="The external applicaton name" item-name="ConnectedSystemName"/>
+		<form:token-description description="The failure reason" item-name="FailureReason"/>
+	</form:token-descriptions>
+	<head>
+		<title>Notice of Password Set Failure</title>
+		<style>
+			<!-- body { font-family: Trebuchet MS } -->
+		</style>
+	</head>
+	<body BGCOLOR="#FFFFFF">
+		<p>Dear $UserFullName$,</p>
+		<p>This is a notice that your password could not be set in the $ConnectedSystemName$ system..  The reason for failure is indicated below:</p>
+		<p>Reason: $FailureReason$</p>
+		<p>If you have any further questions,
+     please contact the help desk at (012) 345-6789 or email
+     at <a href="mailto:help.desk@mycompany.com">
+     help.desk@mycompany.com </a>
+		</p>
+		<p> - Automated Security</p>
+		<p>
+			<img ALT="Powered by Novell" SRC="cid:powered_by_novell.gif" height="29" width="80"/>
+		</p>
+	</body>
+</html>

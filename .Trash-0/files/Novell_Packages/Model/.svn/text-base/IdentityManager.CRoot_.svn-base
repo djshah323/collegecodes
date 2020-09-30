@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.novell.designer.model:CRoot xmlns:com.novell.designer.model="http://com.novell.designer.model" name="IdentityManager">
+  <relations name="Idm:DevRootDomain" type="Child" key="#LZI7VUVG.Domain_"/>
+  <relations name="ModelerNodes" type="Child" key="#JP7H10JZ.ModelerNodes_"/>
+</com.novell.designer.model:CRoot>

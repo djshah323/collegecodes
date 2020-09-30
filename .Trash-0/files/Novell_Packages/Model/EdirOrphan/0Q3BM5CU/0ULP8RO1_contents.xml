@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="User current password" item-name="CurrentPassword"/>
+		<form:token-description description="User full name" item-name="UserFullName"/>
+	</form:token-descriptions>
+	<head>
+		<title>Su petición de contraseña</title>
+		<style>
+			<!-- body { font-family: Trebuchet MS } -->
+		</style>
+	</head>
+	<body BGCOLOR="#FFFFFF">
+		<p>Estimado $UserFullName$:</p>
+		<p>Ha solicitado que le enviemos por correo electrónico su contraseña actual.
+     A continuación, le indicamos la contraseña:</p>
+		<p>Contraseña: $CurrentPassword$</p>
+		<p>Si no ha solicitado que le enviemos por correo electrónico la contraseña, le rogamos que se ponga en contacto con el servicio de asistencia
+     técnica llamando al teléfono (012) 345-6789 o enviando un mensaje de correo electrónico a la dirección 
+     <a href="mailto:help.desk@miempresa.com">help.desk@miempresa.com</a>
+		</p>
+		<p> - Seguridad automatizada</p>
+		<p>
+			<img ALT="Con tecnología Novell" SRC="cid:powered_by_novell.gif" height="29" width="80"/>
+		</p>
+	</body>
+</html>

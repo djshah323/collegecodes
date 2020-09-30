@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Last name of submitter" item-name="submitterLastName"/>
+		<form:token-description description="First name of submitter" item-name="submitterFirstName"/>
+		<form:token-description description="Last name of a delegatee" item-name="userLastName"/>
+		<form:token-description description="First name of a delegatee" item-name="userFirstName"/>
+		<form:token-description description="List of users defined as delegators" item-name="fromUsers"/>
+		<form:token-description description="List of groups defined as delegators" item-name="fromGroups"/>
+		<form:token-description description="List of containers defined as delegators" item-name="fromContainers"/>
+		<form:token-description description="Assignment expiration time" item-name="expirationTime"/>
+		<form:token-description description="List of provisioning definition resources this assignment applies to" item-name="resources"/>
+		<form:token-description description="The protocol to the provisioning user application.  Typically 'http'." item-name="PROTOCOL"/>
+		<form:token-description description="The secure protocol to the provisioning user application.  Typically 'https'." item-name="SECURE_PROTOCOL"/>
+		<form:token-description description="The host name of the provisioning user application." item-name="HOST"/>
+		<form:token-description description="The port to the provisioning user application." item-name="PORT"/>
+		<form:token-description description="The secure port to the provisioning user application." item-name="SECURE_PORT"/>
+		<form:token-description description="The context/path of the URL to the provisioning user application to get a list of availability assignments." item-name="ASSIGNMENT_LIST_CONTEXT"/>
+	</form:token-descriptions>
+您好， 下列人士$operation$了授權某使用者代理一或多使用者、群組或容器的代理指定：$submitterLastName$ $submitterFirstName$。 代理指定與委託指定不同，其獨立於資源申請之外，因此適用於所有工作與設定動作。 獲選為代理的使用者為：$userLastName$ $userFirstName$ 指定的代理有權處理下列使用者、群組，以及容器的所有工作： 使用者：$fromUsers$ 群組：$fromGroups$ 容器：$fromContainers$ 代理指定的過期時間為：$expirationTime$ 您可在 $PROTOCOL$://$HOST$:$PORT$/$PROXY_CONTEXT$ 檢閱您的代理指定清單。
+</form:text>

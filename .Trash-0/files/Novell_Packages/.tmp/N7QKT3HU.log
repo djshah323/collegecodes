@@ -1,0 +1,54 @@
+O365 :Applying policy: %+C%14CNOVLOFFIDCFG-itp-Transform%-C.
+O365 :  Applying to instance #1.
+O365 :    Evaluating selection criteria for rule 're-format BlockCredential'.
+O365 :      (if-operation equal "modify") = FALSE.
+O365 :    Rule rejected.
+O365 :    Evaluating selection criteria for rule 're-format UserPrincipalName'.
+O365 :      (if-operation not-match "add|modify") = TRUE.
+O365 :      (if-operation match "instance") = TRUE.
+O365 :      (if-op-attr 'UserPrincipalName' available) = TRUE.
+O365 :    Rule selected.
+O365 :    Applying rule 're-format UserPrincipalName'.
+O365 :      Action: do-set-local-variable("nodeVal",scope="policy",token-split("@",token-attr("UserPrincipalName"))).
+O365 :        arg-string(token-split("@",token-attr("UserPrincipalName")))
+O365 :          token-split("@",token-attr("UserPrincipalName"))
+O365 :            token-split("@",token-attr("UserPrincipalName"))
+O365 :              token-attr("UserPrincipalName")
+O365 :                Token Value: "force50@admincentral.onmicrosoft.com".
+O365 :              Arg Value: "force50@admincentral.onmicrosoft.com".
+O365 :            Token Value: "force50".
+O365 :          Arg Value: "force50".
+O365 :      Action: do-strip-xpath("./attr[@attr-name='UserPrincipalName']/value/text()").
+O365 :      Action: do-append-xml-text("./attr[@attr-name='UserPrincipalName']/value",token-xpath("$nodeVal")).
+O365 :        arg-string(token-xpath("$nodeVal"))
+O365 :          token-xpath("$nodeVal")
+O365 :            Token Value: "force50".
+O365 :          Arg Value: "force50".
+O365 :Policy returned:
+O365 :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="?.?.?.?">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <instance class-name="MSolUser" event-id="0" src-dn="force50@admincentral.onmicrosoft.com">
+      <association>7e5b18e5-4f9e-44e6-b821-0ad4bed13bd8</association>
+      <attr attr-name="LastName">
+        <value type="string">force50</value>
+      </attr>
+      <attr attr-name="ImmutableId">
+        <value type="string">4VxSWuKSBEj/u+FcUlrikg==</value>
+      </attr>
+      <attr attr-name="BlockCredential">
+        <value type="state">True</value>
+      </attr>
+      <attr attr-name="DisplayName">
+        <value type="string">force50</value>
+      </attr>
+      <attr attr-name="UserPrincipalName">
+        <value type="string">force50</value>
+      </attr>
+    </instance>
+  </input>
+</nds>

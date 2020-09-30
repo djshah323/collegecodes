@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="User current password" item-name="CurrentPassword"/>
+		<form:token-description description="User full name" item-name="UserFullName"/>
+	</form:token-descriptions>
+	<head>
+		<title>Запрос пароля</title>
+		<style>
+			<!-- body { font-family: Trebuchet MS } -->
+		</style>
+	</head>
+	<body BGCOLOR="#FFFFFF">
+		<p>Уважаемый(ая) $UserFullName$,</p>
+		<p>Вы запросили отправку Вам по электронной почте текущего пароля. Пароль приведен ниже:</p>
+		<p>Пароль: $CurrentPassword$</p>
+		<p>Если Вы не отправляли этот запрос, обратитесь в службу поддержки по телефону (012) 345-6789 или по адресу электронной почты <a href="mailto:help.desk@mycompany.com">help.desk@mycompany.com </a>
+		</p>
+		<p> - Автоматический сервис безопасности</p>
+		<p>
+			<img ALT="Поддерживается Novell" SRC="cid:powered_by_novell.gif" height="29" width="80"/>
+		</p>
+	</body>
+</html>

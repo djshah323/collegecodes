@@ -1,0 +1,78 @@
+AD :Applying policy: %+C%14CNOVLADDCFG-pub-mp-Scoping%-C.
+AD :  Applying to add #1.
+AD :    Evaluating selection criteria for rule 'remember relative position in hierarchy'.
+AD :      (if-op-property 'attempt-to-match' not-equal "false") = TRUE.
+AD :    Rule selected.
+AD :    Applying rule 'remember relative position in hierarchy'.
+AD :      Action: do-for-each(arg-node-set(token-global-variable("drv.domains"))).
+AD :        arg-node-set(token-global-variable("drv.domains"))
+AD :          token-global-variable("drv.domains")
+AD :          Token Value: {<instance>,<instance>}.
+AD :          Arg Value: {<instance>,<instance>}.
+AD :        Performing actions for local-variable(current-node) = <instance>.
+AD :          Action: do-set-local-variable("user_container",scope="policy",token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")).
+AD :            arg-string(token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()"))
+AD :              token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")
+AD :                Token Value: "CN=users,DC=novdom,DC=com".
+AD :              Arg Value: "CN=users,DC=novdom,DC=com".
+AD :          Action: do-if().
+AD :            Evaluating conditions.
+AD :              Expanded variable reference '$user_container$' to 'CN=users,DC=novdom,DC=com'.
+AD :              (if-src-dn in-subtree "$user_container$") = TRUE.
+AD :            Performing if actions.
+AD :              Action: do-set-local-variable("addStaticValues",scope="policy","true").
+AD :                arg-string("true")
+AD :                  token-text("true")
+AD :                  Arg Value: "true".
+AD :              Action: do-set-op-property("unmatched-src-dn",token-unmatched-src-dn(convert="true")).
+AD :                arg-string(token-unmatched-src-dn(convert="true"))
+AD :                  token-unmatched-src-dn(convert="true")
+AD :                    Token Value: "mango1".
+AD :                  Arg Value: "mango1".
+AD :              Action: do-set-op-property("attempt-to-match","true").
+AD :                arg-string("true")
+AD :                  token-text("true")
+AD :                  Arg Value: "true".
+AD :        Performing actions for local-variable(current-node) = <instance>.
+AD :          Action: do-set-local-variable("user_container",scope="policy",token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")).
+AD :            arg-string(token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()"))
+AD :              token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")
+AD :                Token Value: "CN=users,DC=netq,DC=com".
+AD :              Arg Value: "CN=users,DC=netq,DC=com".
+AD :          Action: do-if().
+AD :            Evaluating conditions.
+AD :              Expanded variable reference '$user_container$' to 'CN=users,DC=netq,DC=com'.
+AD :              (if-src-dn in-subtree "$user_container$") = FALSE.
+AD :            Performing else actions.
+AD :Policy returned:
+AD :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="4.0.2.4">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <add class-name="User" event-id="AD##148c357670f##0" src-dn="CN=mango1,CN=users,DC=novdom,DC=com">
+      <association>NOVDOM#801be175aa094547a52bee588b20cd3d</association>
+      <add-attr attr-name="Login Expiration Time">
+        <value type="time">4294967294</value>
+      </add-attr>
+      <add-attr attr-name="Login Disabled">
+        <value type="state">false</value>
+      </add-attr>
+      <add-attr attr-name="Full Name">
+        <value naming="false" type="string">mango1</value>
+      </add-attr>
+      <add-attr attr-name="Given Name">
+        <value naming="false" type="string">mango1</value>
+      </add-attr>
+      <add-attr attr-name="CN">
+        <value naming="false" type="string">mango1</value>
+      </add-attr>
+      <add-attr attr-name="DirXML-ADAliasName">
+        <value naming="false" type="string">mango1@NovDom.com</value>
+      </add-attr>
+      <operation-data attempt-to-match="true" unmatched-src-dn="mango1"/>
+    </add>
+  </input>
+</nds>

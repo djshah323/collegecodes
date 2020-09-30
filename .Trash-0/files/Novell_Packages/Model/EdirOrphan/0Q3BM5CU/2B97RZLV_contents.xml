@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Password hint" item-name="Hint"/>
+		<form:token-description description="User full name" item-name="UserFullName"/>
+	</form:token-descriptions>
+	<head>
+		<title>Din begäran om minnestips för lösenord</title>
+		<style>
+			<!-- body { font-family: Trebuchet MS } -->
+		</style>
+	</head>
+	<body BGCOLOR="#FFFFFF">
+		<p>Bästa $UserFullName$,</p>
+		<p>Du har bett att minnestipset för ditt lösenord ska skickas till dig med e-post. Minnestipset
+     visas nedan:</p>
+		<p>Tips: $Hint$</p>
+		<p>Om du inte har bett att få minnestipset skickat till dig kontaktar du
+     helpdesk på (012) 345-6789 eller via e-post till
+     <a href="mailto:help.desk@mittföretag.com">help.desk@mittföretag.com</a>
+		</p>
+		<p> - Automatisk säkerhet</p>
+		<p>
+			<img ALT="Powered by Novell" SRC="cid:powered_by_novell.gif" height="29" width="80"/>
+		</p>
+	</body>
+</html>

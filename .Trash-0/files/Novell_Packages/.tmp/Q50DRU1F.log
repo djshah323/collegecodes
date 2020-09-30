@@ -1,0 +1,102 @@
+AD2Driver :Applying policy: %+C%14CNETQMADDCFG-sub-ctp-HandleMovesAndRenames%-C.
+AD2Driver :  Applying to move #1.
+AD2Driver :    Evaluating selection criteria for rule 'set move destination'.
+AD2Driver :      (if-operation equal "move") = TRUE.
+AD2Driver :    Rule selected.
+AD2Driver :    Applying rule 'set move destination'.
+AD2Driver :      Action: do-set-local-variable("src-dn",scope="policy",token-src-dn()).
+AD2Driver :        arg-string(token-src-dn())
+AD2Driver :          token-src-dn()
+AD2Driver :            Token Value: "SDHAVAL-LINUX-TREE-45\data\users\netq\sub6".
+AD2Driver :          Arg Value: "SDHAVAL-LINUX-TREE-45\data\users\netq\sub6".
+AD2Driver :      Action: do-set-local-variable("old-src-dn",scope="policy",token-xpath("@old-src-dn")).
+AD2Driver :        arg-string(token-xpath("@old-src-dn"))
+AD2Driver :          token-xpath("@old-src-dn")
+AD2Driver :            Token Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\sub6".
+AD2Driver :          Arg Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\sub6".
+AD2Driver :      Action: do-for-each(arg-node-set(token-global-variable("drv.domains"))).
+AD2Driver :        arg-node-set(token-global-variable("drv.domains"))
+AD2Driver :          token-global-variable("drv.domains")
+AD2Driver :          Token Value: {<instance>,<instance>}.
+AD2Driver :          Arg Value: {<instance>,<instance>}.
+AD2Driver :        Performing actions for local-variable(current-node) = <instance>.
+AD2Driver :          Action: do-set-local-variable("domain_container",scope="policy",token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")).
+AD2Driver :            arg-string(token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()"))
+AD2Driver :              token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")
+AD2Driver :                Token Value: "data\users\novdom".
+AD2Driver :              Arg Value: "data\users\novdom".
+AD2Driver :          Action: do-if().
+AD2Driver :            Evaluating conditions.
+AD2Driver :              Expanded variable reference '$domain_container$' to 'data\users\novdom'.
+AD2Driver :              (if-src-dn in-subtree "$domain_container$") = FALSE.
+AD2Driver :            Performing else actions.
+AD2Driver :              Action: do-set-op-src-dn(arg-dn(token-local-variable("old-src-dn"))).
+AD2Driver :                arg-dn(token-local-variable("old-src-dn"))
+AD2Driver :                  token-local-variable("old-src-dn")
+AD2Driver :                    Token Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\sub6".
+AD2Driver :                  Arg Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\sub6".
+AD2Driver :              Action: do-if().
+AD2Driver :                Evaluating conditions.
+AD2Driver :                  Expanded variable reference '$domain_container$' to 'data\users\novdom'.
+AD2Driver :                  (if-src-dn in-subtree "$domain_container$") = TRUE.
+AD2Driver :                Performing if actions.
+AD2Driver :                  Action: do-if().
+AD2Driver :                    Evaluating conditions.
+AD2Driver :                      (if-local-variable 'drv.subPlacementType' equal "flat") = FALSE.
+AD2Driver :                    Performing else actions.
+AD2Driver :                      Action: do-set-xml-attr("old-dest-dn",".",token-op-property("unmatched-src-dn")+","+token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")).
+AD2Driver :                        arg-string(token-op-property("unmatched-src-dn")+","+token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()"))
+AD2Driver :                          token-op-property("unmatched-src-dn")
+AD2Driver :                            Token Value: "".
+AD2Driver :                          token-text(",")
+AD2Driver :                          token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")
+AD2Driver :                            Token Value: "CN=Users,DC=Novdom,DC=com".
+AD2Driver :                          Arg Value: ",CN=Users,DC=Novdom,DC=com".
+AD2Driver :              Action: do-set-op-src-dn(arg-dn(token-local-variable("src-dn"))).
+AD2Driver :                arg-dn(token-local-variable("src-dn"))
+AD2Driver :                  token-local-variable("src-dn")
+AD2Driver :                    Token Value: "SDHAVAL-LINUX-TREE-45\data\users\netq\sub6".
+AD2Driver :                  Arg Value: "SDHAVAL-LINUX-TREE-45\data\users\netq\sub6".
+AD2Driver :        Performing actions for local-variable(current-node) = <instance>.
+AD2Driver :          Action: do-set-local-variable("domain_container",scope="policy",token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")).
+AD2Driver :            arg-string(token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()"))
+AD2Driver :              token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")
+AD2Driver :                Token Value: "data\users\netq".
+AD2Driver :              Arg Value: "data\users\netq".
+AD2Driver :          Action: do-if().
+AD2Driver :            Evaluating conditions.
+AD2Driver :              Expanded variable reference '$domain_container$' to 'data\users\netq'.
+AD2Driver :              (if-src-dn in-subtree "$domain_container$") = FALSE.
+AD2Driver :            Performing else actions.
+AD2Driver :              Action: do-set-op-src-dn(arg-dn(token-local-variable("old-src-dn"))).
+AD2Driver :                arg-dn(token-local-variable("old-src-dn"))
+AD2Driver :                  token-local-variable("old-src-dn")
+AD2Driver :                    Token Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\sub6".
+AD2Driver :                  Arg Value: "\SDHAVAL-LINUX-TREE-45\data\users\novdom\sub6".
+AD2Driver :              Action: do-if().
+AD2Driver :                Evaluating conditions.
+AD2Driver :                  Expanded variable reference '$domain_container$' to 'data\users\netq'.
+AD2Driver :                  (if-src-dn in-subtree "$domain_container$") = FALSE.
+AD2Driver :                Performing else actions.
+AD2Driver :              Action: do-set-op-src-dn(arg-dn(token-local-variable("src-dn"))).
+AD2Driver :                arg-dn(token-local-variable("src-dn"))
+AD2Driver :                  token-local-variable("src-dn")
+AD2Driver :                    Token Value: "SDHAVAL-LINUX-TREE-45\data\users\netq\sub6".
+AD2Driver :                  Arg Value: "SDHAVAL-LINUX-TREE-45\data\users\netq\sub6".
+AD2Driver :    Evaluating selection criteria for rule 'associate mirror root'.
+AD2Driver :      (if-operation equal "move") = TRUE.
+AD2Driver :      (if-xpath true "translate(./parent/@src-dn,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=translate('$drv.domain.container.name$','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')") = FALSE.
+AD2Driver :    Rule rejected.
+AD2Driver :Policy returned:
+AD2Driver :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="4.0.2.4">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <move cached-time="20141221062218.554Z" class-name="User" event-id="linux-yal5#20141221062218#1#3:c2fa8010-85ee-4062-46a9-1080fac2ee85" old-dest-dn=",CN=Users,DC=Novdom,DC=com" old-src-dn="\SDHAVAL-LINUX-TREE-45\data\users\novdom\sub6" qualified-old-src-dn="O=data\OU=users\OU=novdom\CN=sub6" src-dn="SDHAVAL-LINUX-TREE-45\data\users\netq\sub6" timestamp="1418882354#1">
+      <association state="associated">NOVDOM#2c6969a60b9e9a4ba2f7b9c4a055f9e8</association>
+    </move>
+  </input>
+</nds>

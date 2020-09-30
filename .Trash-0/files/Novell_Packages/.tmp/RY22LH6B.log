@@ -1,0 +1,70 @@
+RESTAzure :Applying policy: %+C%14CNOVLRESTAZAD-sub-otp-TranslateToAzure%-C.
+RESTAzure :  Applying to query #1.
+RESTAzure :    Evaluating selection criteria for rule 'azure translate'.
+RESTAzure :    Rule selected.
+RESTAzure :    Applying rule 'azure translate'.
+RESTAzure :      Action: do-set-xml-attr("domain-name","../*/driver-operation-data",token-global-variable("drv.domain")).
+RESTAzure :        arg-string(token-global-variable("drv.domain"))
+RESTAzure :          token-global-variable("drv.domain")
+RESTAzure :            Token Value: "".
+RESTAzure :          Arg Value: "".
+RESTAzure :      Action: do-set-xml-attr("accept","../*/driver-operation-data/request/header","application/json").
+RESTAzure :        arg-string("application/json")
+RESTAzure :          token-text("application/json")
+RESTAzure :          Arg Value: "application/json".
+RESTAzure :      Action: do-set-xml-attr("host","../*/driver-operation-data/request/header","graph.windows.net").
+RESTAzure :        arg-string("graph.windows.net")
+RESTAzure :          token-text("graph.windows.net")
+RESTAzure :          Arg Value: "graph.windows.net".
+RESTAzure :      Action: do-if().
+RESTAzure :        Evaluating conditions.
+RESTAzure :          (if-operation equal "query") = TRUE.
+RESTAzure :          (if-xpath true "../query/driver-operation-data/request/url-token/@filter") = FALSE.
+RESTAzure :        Performing else actions.
+RESTAzure :          Action: do-if().
+RESTAzure :            Evaluating conditions.
+RESTAzure :              (if-class-name match "groups") = TRUE.
+RESTAzure :              (if-xpath true "read-attr[@attr-name="members"]") = TRUE.
+RESTAzure :            Performing if actions.
+RESTAzure :              Action: do-set-xml-attr("association","driver-operation-data[@command="query"]/request/url-token",token-xpath("driver-operation-data[@command="query"]/request/url-token/@association")+"/members").
+RESTAzure :                arg-string(token-xpath("driver-operation-data[@command="query"]/request/url-token/@association")+"/members")
+RESTAzure :                  token-xpath("driver-operation-data[@command="query"]/request/url-token/@association")
+RESTAzure :                    Token Value: "/bad19091-ceff-48b5-bc83-67044c10b093".
+RESTAzure :                  token-text("/members")
+RESTAzure :                  Arg Value: "/bad19091-ceff-48b5-bc83-67044c10b093/members".
+RESTAzure :      Action: do-if().
+RESTAzure :        Evaluating conditions.
+RESTAzure :          (if-operation equal "add") = FALSE.
+RESTAzure :        Performing else actions.
+RESTAzure :      Action: do-if().
+RESTAzure :        Evaluating conditions.
+RESTAzure :          (if-operation equal "modify-password") = FALSE.
+RESTAzure :        Performing else actions.
+RESTAzure :      Action: do-set-xml-attr("api-version","../*/driver-operation-data/request/url-token","?api-version="+token-global-variable("drv.apiversion")).
+RESTAzure :        arg-string("?api-version="+token-global-variable("drv.apiversion"))
+RESTAzure :          token-text("?api-version=")
+RESTAzure :          token-global-variable("drv.apiversion")
+RESTAzure :            Token Value: "".
+RESTAzure :          Arg Value: "?api-version=".
+RESTAzure :Policy returned:
+RESTAzure :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product edition="Advanced" version="4.0.2.0">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <query class-name="groups" event-id="0" scope="entry">
+      <association>bad19091-ceff-48b5-bc83-67044c10b093</association>
+      <search-class class-name="groups"/>
+      <read-attr attr-name="members"/>
+      <driver-operation-data class-name="groups" command="query" domain-name="">
+        <request>
+          <url-token api-version="?api-version=" association="/bad19091-ceff-48b5-bc83-67044c10b093/members"/>
+          <header accept="application/json" content-type="application/json" host="graph.windows.net"/>
+          <value>{"scope":"entry","event-id":"0","class-name":"groups","association":"bad19091-ceff-48b5-bc83-67044c10b093","dest-dn":"","search-class":["groups"],"read-attr":["members"]}</value>
+        </request>
+      </driver-operation-data>
+    </query>
+  </input>
+</nds>

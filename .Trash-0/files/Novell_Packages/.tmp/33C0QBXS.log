@@ -1,0 +1,63 @@
+RESTDriverShim :Applying policy: %+C%14CNOVLRESTJSON-JSONtoXDS%-C.
+RESTDriverShim :  Applying to driver-operation-data #1.
+RESTDriverShim :    Evaluating selection criteria for rule 'Translate JSON to XDS'.
+RESTDriverShim :      (if-operation not-match "status") = TRUE.
+RESTDriverShim :    Rule selected.
+RESTDriverShim :    Applying rule 'Translate JSON to XDS'.
+RESTDriverShim :      Action: do-set-local-variable("operations",scope="policy",arg-node-set(token-xpath("."))).
+RESTDriverShim :        arg-node-set(token-xpath("."))
+RESTDriverShim :          token-xpath(".")
+RESTDriverShim :          Token Value: {<driver-operation-data> @class-name = "User" @command = "query" @filter = "search-attr=Title+eq+%27Mr%27" @remote-host = "164.99.162.29" @url = "http://164.99.178.58:7072/User?search-attr=Title+eq+%27Mr%27"}.
+RESTDriverShim :          Arg Value: {<driver-operation-data> @class-name = "User" @command = "query" @filter = "search-attr=Title+eq+%27Mr%27" @remote-host = "164.99.162.29" @url = "http://164.99.178.58:7072/User?search-attr=Title+eq+%27Mr%27"}.
+RESTDriverShim :      Action: do-for-each(arg-node-set(token-local-variable("operations"))).
+RESTDriverShim :        arg-node-set(token-local-variable("operations"))
+RESTDriverShim :          token-local-variable("operations")
+RESTDriverShim :          Token Value: {<driver-operation-data> @class-name = "User" @command = "query" @filter = "search-attr=Title+eq+%27Mr%27" @remote-host = "164.99.162.29" @url = "http://164.99.178.58:7072/User?search-attr=Title+eq+%27Mr%27"}.
+RESTDriverShim :          Arg Value: {<driver-operation-data> @class-name = "User" @command = "query" @filter = "search-attr=Title+eq+%27Mr%27" @remote-host = "164.99.162.29" @url = "http://164.99.178.58:7072/User?search-attr=Title+eq+%27Mr%27"}.
+RESTDriverShim :        Performing actions for local-variable(current-node) = <driver-operation-data> @class-name = "User" @command = "query" @filter = "search-attr=Title+eq+%27Mr%27" @remote-host = "164.99.162.29" @url = "http://164.99.178.58:7072/User?search-attr=Title+eq+%27Mr%27".
+RESTDriverShim :          Action: do-set-local-variable("command",scope="policy",token-xpath("@command")).
+RESTDriverShim :            arg-string(token-xpath("@command"))
+RESTDriverShim :              token-xpath("@command")
+RESTDriverShim :                Token Value: "query".
+RESTDriverShim :              Arg Value: "query".
+RESTDriverShim :          Action: do-if().
+RESTDriverShim :            Evaluating conditions.
+RESTDriverShim :              (if-local-variable 'command' match "query|delete") = TRUE.
+RESTDriverShim :            Performing if actions.
+RESTDriverShim :              Action: do-if().
+RESTDriverShim :                Evaluating conditions.
+RESTDriverShim :                  (if-local-variable 'command' equal "query") = TRUE.
+RESTDriverShim :                Performing if actions.
+RESTDriverShim :                  Action: do-append-xml-element("query","//nds/input").
+RESTDriverShim :                  Action: do-set-xml-attr("class-name","//nds/input/query[last()]",token-xpath("@class-name")).
+RESTDriverShim :                    arg-string(token-xpath("@class-name"))
+RESTDriverShim :                      token-xpath("@class-name")
+RESTDriverShim :                        Token Value: "User".
+RESTDriverShim :                      Arg Value: "User".
+RESTDriverShim :                  Action: do-append-xml-element("search-class","//nds/input/query[last()]").
+RESTDriverShim :                  Action: do-append-xml-text("//nds/input/query[last()]/search-class[last()]",token-xpath("@class-name")).
+RESTDriverShim :                    arg-string(token-xpath("@class-name"))
+RESTDriverShim :                      token-xpath("@class-name")
+RESTDriverShim :                        Token Value: "User".
+RESTDriverShim :                      Arg Value: "User".
+RESTDriverShim :                  Action: do-if().
+RESTDriverShim :                    Evaluating conditions.
+RESTDriverShim :                      (if-xpath true "@association") = FALSE.
+RESTDriverShim :                    Performing else actions.
+RESTDriverShim :                      Action: do-set-xml-attr("dest-dn","//nds/input/query[last()]",token-global-variable("idv.dit.data.users")).
+RESTDriverShim :                        arg-string(token-global-variable("idv.dit.data.users"))
+RESTDriverShim :                          token-global-variable("idv.dit.data.users")
+RESTDriverShim :                            Token Value: "data\users".
+RESTDriverShim :                          Arg Value: "data\users".
+RESTDriverShim :                      Action: do-set-local-variable("filterText",scope="policy",token-xpath("@filter")).
+RESTDriverShim :                        arg-string(token-xpath("@filter"))
+RESTDriverShim :                          token-xpath("@filter")
+RESTDriverShim :                            Token Value: "search-attr=Title+eq+%27Mr%27".
+RESTDriverShim :                          Arg Value: "search-attr=Title+eq+%27Mr%27".
+RESTDriverShim :                      Action: do-set-local-variable("filterTextNode",scope="policy",arg-node-set(token-split("and",token-substring(start="12",token-xpath("rs:urlDecode($filterText)"))))).
+RESTDriverShim :                        arg-node-set(token-split("and",token-substring(start="12",token-xpath("rs:urlDecode($filterText)"))))
+RESTDriverShim :                          token-split("and",token-substring(start="12",token-xpath("rs:urlDecode($filterText)")))
+RESTDriverShim :                            token-split("and",token-substring(start="12",token-xpath("rs:urlDecode($filterText)")))
+RESTDriverShim :                              token-substring(start="12",token-xpath("rs:urlDecode($filterText)"))
+RESTDriverShim :                                token-substring(start="12",token-xpath("rs:urlDecode($filterText)"))
+RESTDriverShim :                                  token-xpath("rs:urlDecode($filterText)")

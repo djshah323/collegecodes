@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Request name" item-name="requestTitle"/>
+		<form:token-description description="Submitted by" item-name="initiatorFullName"/>
+		<form:token-description description="Recipient's full name" item-name="recipientFullName"/>
+		<form:token-description description="The protocol to the provisioning user application.  Typically 'http'." item-name="PROTOCOL"/>
+		<form:token-description description="The secure protocol to the provisioning user application.  Typically 'https'." item-name="SECURE_PROTOCOL"/>
+		<form:token-description description="The host name of the provisioning user application." item-name="HOST"/>
+		<form:token-description description="The port to the provisioning user application." item-name="PORT"/>
+		<form:token-description description="The secure port to the provisioning user application." item-name="SECURE_PORT"/>
+		<form:token-description description="The context/path of the URL to the provisioning user application to get a list of tasks assigned to a email recipient." item-name="TASKLIST_CONTEXT"/>
+		<form:token-description description="The context/path to the provisioning user application to get details of the current task." item-name="TASK_DETAILS"/>
+	</form:token-descriptions> 
+您好：
+
+一个已提交的新资源请求需要您批准。
+
+请求名称：$requestTitle$
+提交者：$initiatorFullName$
+收件人：$recipientFullName$
+
+请在以下位置查看此资源请求的细节：$PROTOCOL$://$HOST$:$PORT$/$TASK_DETAILS$，以便执行相应的操作。
+
+可以在以下位置查看等待您批准的所有资源请求的列表：$PROTOCOL$://$HOST$:$PORT$/$TASKLIST_CONTEXT$。
+
+</form:text>

@@ -1,0 +1,16 @@
+REST :Applying policy: %+C%14CNOVLRESTJSON-itp-TranslateContent%-C.
+REST :  Applying to status #1.
+REST :    Evaluating selection criteria for rule 'Edit association if add operation'.
+REST :      (if-operation equal "status") = TRUE.
+REST :      (if-xml-attr 'level' equal "success") = TRUE.
+REST :      (if-xpath true "driver-operation-data/@command="add"") = TRUE.
+REST :    Rule selected.
+REST :    Applying rule 'Edit association if add operation'.
+REST :      Action: do-set-local-variable("applicationResponse",scope="policy",token-xpath("self::status[@level="success" and @operation-type="add"]/text()")).
+REST :        arg-string(token-xpath("self::status[@level="success" and @operation-type="add"]/text()"))
+REST :          token-xpath("self::status[@level="success" and @operation-type="add"]/text()")
+REST :            Token Value: "".
+REST :          Arg Value: "".
+REST :      Action: do-set-local-variable("destDN",scope="policy",token-xpath("rs:getJSONAttrStringValue($applicationResponse,"dest-dn")")).
+REST :        arg-string(token-xpath("rs:getJSONAttrStringValue($applicationResponse,"dest-dn")"))
+REST :          token-xpath("rs:getJSONAttrStringValue($applicationResponse,"dest-dn")")

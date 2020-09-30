@@ -1,0 +1,120 @@
+RESTAzure :Applying policy: %+C%14CNOVLRESTAZAD-sub-otp-GroupMembership%-C.
+RESTAzure :  Applying to modify #1.
+RESTAzure :    Evaluating selection criteria for rule 'handle membership change'.
+RESTAzure :      (if-class-name equal "Group") = TRUE.
+RESTAzure :      (if-operation match "add|modify") = TRUE.
+RESTAzure :      (if-op-attr 'members' changing) = TRUE.
+RESTAzure :    Rule selected.
+RESTAzure :    Applying rule 'handle membership change'.
+RESTAzure :      Action: do-set-local-variable("member-values",scope="policy",arg-node-set(token-xpath("$current-op/add-attr|modify-attr[@attr-name="members"]/*"))).
+RESTAzure :        arg-node-set(token-xpath("$current-op/add-attr|modify-attr[@attr-name="members"]/*"))
+RESTAzure :          token-xpath("$current-op/add-attr|modify-attr[@attr-name="members"]/*")
+RESTAzure :          Token Value: {<remove-value>}.
+RESTAzure :          Arg Value: {<remove-value>}.
+RESTAzure :      Action: do-for-each(arg-node-set(token-local-variable("member-values"))).
+RESTAzure :        arg-node-set(token-local-variable("member-values"))
+RESTAzure :          token-local-variable("member-values")
+RESTAzure :          Token Value: {<remove-value>}.
+RESTAzure :          Arg Value: {<remove-value>}.
+RESTAzure :        Performing actions for local-variable(current-node) = <remove-value>.
+RESTAzure :          Action: do-if().
+RESTAzure :            Evaluating conditions.
+RESTAzure :              (if-operation match "add") = FALSE.
+RESTAzure :            Performing else actions.
+RESTAzure :              Action: do-if().
+RESTAzure :                Evaluating conditions.
+RESTAzure :                  (if-operation match "modify") = TRUE.
+RESTAzure :                Performing if actions.
+RESTAzure :                  Action: do-set-local-variable("xmlInput",scope="policy",token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize("<input><modify-attr attr-name="members">"+token-local-variable("current-node")+"</modify-attr></input>")))).
+RESTAzure :                    arg-string(token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize("<input><modify-attr attr-name="members">"+token-local-variable("current-node")+"</modify-attr></input>"))))
+RESTAzure :                      token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize("<input><modify-attr attr-name="members">"+token-local-variable("current-node")+"</modify-attr></input>")))
+RESTAzure :                        token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize("<input><modify-attr attr-name="members">"+token-local-variable("current-node")+"</modify-attr></input>")))
+RESTAzure :                          token-replace-all("&lt;","<",token-xml-serialize("<input><modify-attr attr-name="members">"+token-local-variable("current-node")+"</modify-attr></input>"))
+RESTAzure :                            token-replace-all("&lt;","<",token-xml-serialize("<input><modify-attr attr-name="members">"+token-local-variable("current-node")+"</modify-attr></input>"))
+RESTAzure :                              token-xml-serialize("<input><modify-attr attr-name="members">"+token-local-variable("current-node")+"</modify-attr></input>")
+RESTAzure :                                token-xml-serialize("<input><modify-attr attr-name="members">"+token-local-variable("current-node")+"</modify-attr></input>")
+RESTAzure :                                  token-text("<input><modify-attr attr-name="members">")
+RESTAzure :                                  Token Value: "<input><modify-attr attr-name="members">".
+RESTAzure :                                  token-local-variable("current-node")
+RESTAzure :                                  Token Value: {<remove-value>}.
+RESTAzure :                                  token-text("</modify-attr></input>")
+RESTAzure :                                  Token Value: "</modify-attr></input>".
+RESTAzure :                                  Arg Value: {"&lt;input&gt;&lt;modify-attr attr-name=&quot;...",<remove-value>,"&lt;/modify-attr&gt;&lt;/input&gt;"}.
+RESTAzure :                                Token Value: "&lt;input>&lt;modify-attr attr-name="members"><remove-value>
+	<value timestamp="1396605497#1" type="dn">\KPHAL\data\users\azureUser7</value>
+</remove-value>&lt;/modify-attr>&lt;/input>".
+RESTAzure :                              Arg Value: "&lt;input>&lt;modify-attr attr-name="members"><remove-value>
+	<value timestamp="1396605497#1" type="dn">\KPHAL\data\users\azureUser7</value>
+</remove-value>&lt;/modify-attr>&lt;/input>".
+RESTAzure :                            Token Value: "<input><modify-attr attr-name="members"><remove-value>
+	<value timestamp="1396605497#1" type="dn">\KPHAL\data\users\azureUser7</value>
+</remove-value></modify-attr></input>".
+RESTAzure :                          Arg Value: "<input><modify-attr attr-name="members"><remove-value>
+	<value timestamp="1396605497#1" type="dn">\KPHAL\data\users\azureUser7</value>
+</remove-value></modify-attr></input>".
+RESTAzure :                        Token Value: "PGlucHV0Pjxtb2RpZnktYXR0ciBhdHRyLW5hbWU9Im1lbWJlcnMiPjxyZW1vdmUtdmFsdWU+Cgk8dmFsdWUgdGltZXN0YW1wPSIxMzk2NjA1NDk3IzEiIHR5cGU9ImRuIj5cS1BIQUxcZGF0YVx1c2Vyc1xhenVyZVVzZXI3PC92YWx1ZT4KPC9yZW1vdmUtdmFsdWU+PC9tb2RpZnktYXR0cj48L2lucHV0Pg==".
+RESTAzure :                      Arg Value: "PGlucHV0Pjxtb2RpZnktYXR0ciBhdHRyLW5hbWU9Im1lbWJlcnMiPjxyZW1vdmUtdmFsdWU+Cgk8dmFsdWUgdGltZXN0YW1wPSIxMzk2NjA1NDk3IzEiIHR5cGU9ImRuIj5cS1BIQUxcZGF0YVx1c2Vyc1xhenVyZVVzZXI3PC92YWx1ZT4KPC9yZW1vdmUtdmFsdWU+PC9tb2RpZnktYXR0cj48L2lucHV0Pg==".
+RESTAzure :                  Action: do-if().
+RESTAzure :                    Evaluating conditions.
+RESTAzure :                      (if-xpath true "$current-node/..//*[contains(local-name(), 'add')]") = FALSE.
+RESTAzure :                    Performing else actions.
+RESTAzure :                      Action: do-set-local-variable("method",scope="policy","DELETE").
+RESTAzure :                        arg-string("DELETE")
+RESTAzure :                          token-text("DELETE")
+RESTAzure :                          Arg Value: "DELETE".
+RESTAzure :          Action: do-append-xml-element("driver-operation-data","$current-op").
+RESTAzure :          Action: do-set-xml-attr("class-name","$current-op/driver-operation-data[last()]",token-class-name()).
+RESTAzure :            arg-string(token-class-name())
+RESTAzure :              token-class-name()
+RESTAzure :                Token Value: "Group".
+RESTAzure :              Arg Value: "Group".
+RESTAzure :          Action: do-set-xml-attr("command","$current-op/driver-operation-data[last()]","add-member").
+RESTAzure :            arg-string("add-member")
+RESTAzure :              token-text("add-member")
+RESTAzure :              Arg Value: "add-member".
+RESTAzure :          Action: do-set-xml-attr("method","$current-op/driver-operation-data[last()]",token-local-variable("method")).
+RESTAzure :            arg-string(token-local-variable("method"))
+RESTAzure :              token-local-variable("method")
+RESTAzure :                Token Value: "DELETE".
+RESTAzure :              Arg Value: "DELETE".
+RESTAzure :          Action: do-set-xml-attr("uri","$current-op/driver-operation-data[last()]","https://graph.windows.net/"+token-global-variable("drv.domain")+"/groups/"+token-association()+"/$links/members?api-version=2013-04-05").
+RESTAzure :            arg-string("https://graph.windows.net/"+token-global-variable("drv.domain")+"/groups/"+token-association()+"/$links/members?api-version=2013-04-05")
+RESTAzure :              token-text("https://graph.windows.net/")
+RESTAzure :              token-global-variable("drv.domain")
+RESTAzure :                Token Value: "".
+RESTAzure :              token-text("/groups/")
+RESTAzure :              token-association()
+RESTAzure :                Token Value: "40e0c459-0276-4d89-a9a8-eeb0bea8dd83".
+RESTAzure :              token-text("/$links/members?api-version=2013-04-05")
+RESTAzure :              Arg Value: "https://graph.windows.net//groups/40e0c459-0276-4d89-a9a8-eeb0bea8dd83/$links/members?api-version=2013-04-05".
+RESTAzure :          Action: do-append-xml-element("value","$current-op/driver-operation-data[last()]").
+RESTAzure :          Action: do-append-xml-text("$current-op/driver-operation-data[last()]/value",token-local-variable("applicationContent")).
+RESTAzure :            arg-string(token-local-variable("applicationContent"))
+RESTAzure :              token-local-variable("applicationContent")
+RESTAzure :                Token Value: "".
+RESTAzure :              Arg Value: "".
+RESTAzure :          Action: do-set-xml-attr("content-type","$current-op/driver-operation-data/value","application/json").
+RESTAzure :            arg-string("application/json")
+RESTAzure :              token-text("application/json")
+RESTAzure :              Arg Value: "application/json".
+RESTAzure :          Action: do-set-xml-attr("Host","$current-op/driver-operation-data/value","graph.windows.net").
+RESTAzure :            arg-string("graph.windows.net")
+RESTAzure :              token-text("graph.windows.net")
+RESTAzure :              Arg Value: "graph.windows.net".
+RESTAzure :          Action: do-strip-op-attr("members").
+RESTAzure :Policy returned:
+RESTAzure :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product edition="Advanced" version="4.0.2.4">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <modify cached-time="20140404095817.147Z" class-name="Group" event-id="linux-djs#20140404095817#1#1:75d3de27-6430-4a7d-d5a5-27ded3753064" qualified-src-dn="O=data\OU=users\CN=RajaGroup" src-dn="\KPHAL\data\users\RajaGroup" src-entry-id="34314" timestamp="1396605497#1">
+      <association state="associated">40e0c459-0276-4d89-a9a8-eeb0bea8dd83</association>
+      <driver-operation-data class-name="Group" command="add-member" method="DELETE" uri="https://graph.windows.net//groups/40e0c459-0276-4d89-a9a8-eeb0bea8dd83/$links/members?api-version=2013-04-05">
+        <value Host="graph.windows.net" content-type="application/json"/>
+      </driver-operation-data>
+    </modify>
+  </input>
+</nds>

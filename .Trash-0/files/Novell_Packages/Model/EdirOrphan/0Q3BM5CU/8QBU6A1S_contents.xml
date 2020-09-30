@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="Target entity's Firstname" item-name="firstName"/>
+		<form:token-description description="Target entity's Lastname" item-name="lastName"/>
+		<form:token-description description="Url to get a detailed profile." item-name="detailUrl"/>
+		<form:token-description description="Email Sender Firstname" item-name="initiatorFirstName"/>
+		<form:token-description description="Email Sender Lastname" item-name="initiatorLastName"/>
+	</form:token-descriptions> 
+Hola:
+
+Haga clic en el siguiente enlace para acceder a un perfil detallado acerca de $firstName$ $lastName$:
+$detailUrl$
+
+Saludos,
+
+$initiatorFirstName$ $initiatorLastName$.
+
+</form:text>

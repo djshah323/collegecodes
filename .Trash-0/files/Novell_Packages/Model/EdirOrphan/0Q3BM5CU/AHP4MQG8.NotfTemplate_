@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.novell.designer.model:CObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.novell.designer.model="http://com.novell.designer.model" name="Forgot Password">
+  <attributes xsi:type="com.novell.designer.model:CHeavyData" attrName="contents"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="notfMergeTemplateSubject" value="Your password request"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="Idm:PackageAssocGuid" value="FJPUWEFC_201007271228480541"/>
+  <attributes xsi:type="com.novell.designer.model:CString" attrName="Idm:PackageGuid" value="BJKMHMCN_201007271216350594"/>
+  <attributes xsi:type="com.novell.designer.model:CLong" attrName="Idm:ContentChecksum" value="2895219879"/>
+</com.novell.designer.model:CObject>

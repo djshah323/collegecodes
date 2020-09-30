@@ -1,0 +1,156 @@
+RESTAzure :Applying policy: %+C%14CNOVLRESTAZAD-sub-otp-GroupMembership%-C.
+RESTAzure :  Applying to modify #1.
+RESTAzure :    Evaluating selection criteria for rule 'handle membership change'.
+RESTAzure :      (if-class-name equal "Groups") = TRUE.
+RESTAzure :      (if-operation match "modify") = TRUE.
+RESTAzure :      (if-op-attr 'members' changing) = TRUE.
+RESTAzure :    Rule selected.
+RESTAzure :    Applying rule 'handle membership change'.
+RESTAzure :      Action: do-set-local-variable("member-values",scope="policy",arg-node-set(token-xpath("$current-op/modify-attr[@attr-name="members"]/*"))).
+RESTAzure :        arg-node-set(token-xpath("$current-op/modify-attr[@attr-name="members"]/*"))
+RESTAzure :          token-xpath("$current-op/modify-attr[@attr-name="members"]/*")
+RESTAzure :          Token Value: {<remove-value>,<remove-value>}.
+RESTAzure :          Arg Value: {<remove-value>,<remove-value>}.
+RESTAzure :      Action: do-append-xml-element("driver-operation-data","$current-op").
+RESTAzure :      Action: do-set-xml-attr("command","$current-op/driver-operation-data[last()]","add-member").
+RESTAzure :        arg-string("add-member")
+RESTAzure :          token-text("add-member")
+RESTAzure :          Arg Value: "add-member".
+RESTAzure :      Action: do-set-xml-attr("class-name","$current-op/driver-operation-data[last()]",token-class-name()).
+RESTAzure :        arg-string(token-class-name())
+RESTAzure :          token-class-name()
+RESTAzure :            Token Value: "groups".
+RESTAzure :          Arg Value: "groups".
+RESTAzure :      Action: do-append-xml-element("driver-operation-data","$current-op").
+RESTAzure :      Action: do-set-xml-attr("command","$current-op/driver-operation-data[last()]","remove-member").
+RESTAzure :        arg-string("remove-member")
+RESTAzure :          token-text("remove-member")
+RESTAzure :          Arg Value: "remove-member".
+RESTAzure :      Action: do-set-xml-attr("class-name","$current-op/driver-operation-data[last()]",token-class-name()).
+RESTAzure :        arg-string(token-class-name())
+RESTAzure :          token-class-name()
+RESTAzure :            Token Value: "groups".
+RESTAzure :          Arg Value: "groups".
+RESTAzure :      Action: do-for-each(arg-node-set(token-local-variable("member-values"))).
+RESTAzure :        arg-node-set(token-local-variable("member-values"))
+RESTAzure :          token-local-variable("member-values")
+RESTAzure :          Token Value: {<remove-value>,<remove-value>}.
+RESTAzure :          Arg Value: {<remove-value>,<remove-value>}.
+RESTAzure :        Performing actions for local-variable(current-node) = <remove-value>.
+RESTAzure :          Action: do-if().
+RESTAzure :            Evaluating conditions.
+RESTAzure :              (if-xpath true "$current-node/..//*[contains(local-name(), 'add')]") = FALSE.
+RESTAzure :            Performing else actions.
+RESTAzure :              Action: do-set-local-variable("remove-members",scope="policy",arg-node-set(token-xpath("$current-node/*"))).
+RESTAzure :                arg-node-set(token-xpath("$current-node/*"))
+RESTAzure :                  token-xpath("$current-node/*")
+RESTAzure :                  Token Value: {<value> @association-ref = "2270e533-55c7-4758-bcb1-24497376516f" @timestamp = "1400683641#1" @type = "dn"}.
+RESTAzure :                  Arg Value: {<value> @association-ref = "2270e533-55c7-4758-bcb1-24497376516f" @timestamp = "1400683641#1" @type = "dn"}.
+RESTAzure :              Action: do-for-each(arg-node-set(token-local-variable("remove-members"))).
+RESTAzure :                arg-node-set(token-local-variable("remove-members"))
+RESTAzure :                  token-local-variable("remove-members")
+RESTAzure :                  Token Value: {<value> @association-ref = "2270e533-55c7-4758-bcb1-24497376516f" @timestamp = "1400683641#1" @type = "dn"}.
+RESTAzure :                  Arg Value: {<value> @association-ref = "2270e533-55c7-4758-bcb1-24497376516f" @timestamp = "1400683641#1" @type = "dn"}.
+RESTAzure :                Performing actions for local-variable(current-node) = <value> @association-ref = "2270e533-55c7-4758-bcb1-24497376516f" @timestamp = "1400683641#1" @type = "dn".
+RESTAzure :                  Action: do-append-xml-element("request","$current-op/driver-operation-data[@command="remove-member"]").
+RESTAzure :                  Action: do-append-xml-element("url-token","$current-op/driver-operation-data[@command="remove-member"]/request[last()]").
+RESTAzure :                  Action: do-append-xml-element("header","$current-op/driver-operation-data[@command="remove-member"]/request[last()]").
+RESTAzure :                  Action: do-set-xml-attr("host","$current-op/driver-operation-data[@command="remove-member"]/request[last()]/header","graph.windows.net").
+RESTAzure :                    arg-string("graph.windows.net")
+RESTAzure :                      token-text("graph.windows.net")
+RESTAzure :                      Arg Value: "graph.windows.net".
+RESTAzure :                  Action: do-set-xml-attr("content-type","$current-op/driver-operation-data[@command="remove-member"]/request[last()]/header","application/json").
+RESTAzure :                    arg-string("application/json")
+RESTAzure :                      token-text("application/json")
+RESTAzure :                      Arg Value: "application/json".
+RESTAzure :                  Action: do-set-xml-attr("method","$current-op/driver-operation-data[@command="remove-member"]/request[last()]","DELETE").
+RESTAzure :                    arg-string("DELETE")
+RESTAzure :                      token-text("DELETE")
+RESTAzure :                      Arg Value: "DELETE".
+RESTAzure :                  Action: do-set-xml-attr("url","$current-op/driver-operation-data[@command="remove-member"]/request[last()]","https://graph.windows.net/"+token-global-variable("drv.domain")+"/groups/"+token-association()+"/$links/members/"+token-xpath("$current-node/@association-ref")+"?api-version=2013-04-05").
+RESTAzure :                    arg-string("https://graph.windows.net/"+token-global-variable("drv.domain")+"/groups/"+token-association()+"/$links/members/"+token-xpath("$current-node/@association-ref")+"?api-version=2013-04-05")
+RESTAzure :                      token-text("https://graph.windows.net/")
+RESTAzure :                      token-global-variable("drv.domain")
+RESTAzure :                        Token Value: "".
+RESTAzure :                      token-text("/groups/")
+RESTAzure :                      token-association()
+RESTAzure :                        Token Value: "bad19091-ceff-48b5-bc83-67044c10b093".
+RESTAzure :                      token-text("/$links/members/")
+RESTAzure :                      token-xpath("$current-node/@association-ref")
+RESTAzure :                        Token Value: "2270e533-55c7-4758-bcb1-24497376516f".
+RESTAzure :                      token-text("?api-version=2013-04-05")
+RESTAzure :                      Arg Value: "https://graph.windows.net//groups/bad19091-ceff-48b5-bc83-67044c10b093/$links/members/2270e533-55c7-4758-bcb1-24497376516f?api-version=2013-04-05".
+RESTAzure :                  Action: do-append-xml-element("value","$current-op/driver-operation-data[@command="remove-member"]/request[last()]").
+RESTAzure :          Action: do-strip-op-attr("members").
+RESTAzure :        Performing actions for local-variable(current-node) = <remove-value>.
+RESTAzure :          Action: do-if().
+RESTAzure :            Evaluating conditions.
+RESTAzure :              (if-xpath true "$current-node/..//*[contains(local-name(), 'add')]") = FALSE.
+RESTAzure :            Performing else actions.
+RESTAzure :              Action: do-set-local-variable("remove-members",scope="policy",arg-node-set(token-xpath("$current-node/*"))).
+RESTAzure :                arg-node-set(token-xpath("$current-node/*"))
+RESTAzure :                  token-xpath("$current-node/*")
+RESTAzure :                  Token Value: {<value> @association-ref = "aad7c37c-2ada-40f3-9dce-f1ae60996594" @timestamp = "1400683641#2" @type = "dn"}.
+RESTAzure :                  Arg Value: {<value> @association-ref = "aad7c37c-2ada-40f3-9dce-f1ae60996594" @timestamp = "1400683641#2" @type = "dn"}.
+RESTAzure :              Action: do-for-each(arg-node-set(token-local-variable("remove-members"))).
+RESTAzure :                arg-node-set(token-local-variable("remove-members"))
+RESTAzure :                  token-local-variable("remove-members")
+RESTAzure :                  Token Value: {<value> @association-ref = "aad7c37c-2ada-40f3-9dce-f1ae60996594" @timestamp = "1400683641#2" @type = "dn"}.
+RESTAzure :                  Arg Value: {<value> @association-ref = "aad7c37c-2ada-40f3-9dce-f1ae60996594" @timestamp = "1400683641#2" @type = "dn"}.
+RESTAzure :                Performing actions for local-variable(current-node) = <value> @association-ref = "aad7c37c-2ada-40f3-9dce-f1ae60996594" @timestamp = "1400683641#2" @type = "dn".
+RESTAzure :                  Action: do-append-xml-element("request","$current-op/driver-operation-data[@command="remove-member"]").
+RESTAzure :                  Action: do-append-xml-element("url-token","$current-op/driver-operation-data[@command="remove-member"]/request[last()]").
+RESTAzure :                  Action: do-append-xml-element("header","$current-op/driver-operation-data[@command="remove-member"]/request[last()]").
+RESTAzure :                  Action: do-set-xml-attr("host","$current-op/driver-operation-data[@command="remove-member"]/request[last()]/header","graph.windows.net").
+RESTAzure :                    arg-string("graph.windows.net")
+RESTAzure :                      token-text("graph.windows.net")
+RESTAzure :                      Arg Value: "graph.windows.net".
+RESTAzure :                  Action: do-set-xml-attr("content-type","$current-op/driver-operation-data[@command="remove-member"]/request[last()]/header","application/json").
+RESTAzure :                    arg-string("application/json")
+RESTAzure :                      token-text("application/json")
+RESTAzure :                      Arg Value: "application/json".
+RESTAzure :                  Action: do-set-xml-attr("method","$current-op/driver-operation-data[@command="remove-member"]/request[last()]","DELETE").
+RESTAzure :                    arg-string("DELETE")
+RESTAzure :                      token-text("DELETE")
+RESTAzure :                      Arg Value: "DELETE".
+RESTAzure :                  Action: do-set-xml-attr("url","$current-op/driver-operation-data[@command="remove-member"]/request[last()]","https://graph.windows.net/"+token-global-variable("drv.domain")+"/groups/"+token-association()+"/$links/members/"+token-xpath("$current-node/@association-ref")+"?api-version=2013-04-05").
+RESTAzure :                    arg-string("https://graph.windows.net/"+token-global-variable("drv.domain")+"/groups/"+token-association()+"/$links/members/"+token-xpath("$current-node/@association-ref")+"?api-version=2013-04-05")
+RESTAzure :                      token-text("https://graph.windows.net/")
+RESTAzure :                      token-global-variable("drv.domain")
+RESTAzure :                        Token Value: "".
+RESTAzure :                      token-text("/groups/")
+RESTAzure :                      token-association()
+RESTAzure :                        Token Value: "bad19091-ceff-48b5-bc83-67044c10b093".
+RESTAzure :                      token-text("/$links/members/")
+RESTAzure :                      token-xpath("$current-node/@association-ref")
+RESTAzure :                        Token Value: "aad7c37c-2ada-40f3-9dce-f1ae60996594".
+RESTAzure :                      token-text("?api-version=2013-04-05")
+RESTAzure :                      Arg Value: "https://graph.windows.net//groups/bad19091-ceff-48b5-bc83-67044c10b093/$links/members/aad7c37c-2ada-40f3-9dce-f1ae60996594?api-version=2013-04-05".
+RESTAzure :                  Action: do-append-xml-element("value","$current-op/driver-operation-data[@command="remove-member"]/request[last()]").
+RESTAzure :          Action: do-strip-op-attr("members").
+RESTAzure :Policy returned:
+RESTAzure :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product version="?.?.?.?">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <input>
+    <modify cached-time="20140521145451.192Z" class-name="groups" event-id="linux-djs#20140521145450#1#1:ea4e51de-f544-4095-f28d-de514eea44f5" qualified-src-dn="O=data\OU=users\CN=ahmedabad" src-dn="\KPHAL\data\users\ahmedabad" src-entry-id="35650" timestamp="0#0">
+      <association state="associated">bad19091-ceff-48b5-bc83-67044c10b093</association>
+      <driver-operation-data class-name="groups" command="add-member"/>
+      <driver-operation-data class-name="groups" command="remove-member">
+        <request method="DELETE" url="https://graph.windows.net//groups/bad19091-ceff-48b5-bc83-67044c10b093/$links/members/2270e533-55c7-4758-bcb1-24497376516f?api-version=2013-04-05">
+          <url-token/>
+          <header content-type="application/json" host="graph.windows.net"/>
+          <value/>
+        </request>
+        <request method="DELETE" url="https://graph.windows.net//groups/bad19091-ceff-48b5-bc83-67044c10b093/$links/members/aad7c37c-2ada-40f3-9dce-f1ae60996594?api-version=2013-04-05">
+          <url-token/>
+          <header content-type="application/json" host="graph.windows.net"/>
+          <value/>
+        </request>
+      </driver-operation-data>
+    </modify>
+  </input>
+</nds>

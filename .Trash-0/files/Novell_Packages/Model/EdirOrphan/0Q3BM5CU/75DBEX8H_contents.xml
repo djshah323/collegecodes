@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form">
+	<form:token-descriptions>
+		<form:token-description description="request initiator name" item-name="initiatorFullName"/>
+		<form:token-description description="request instance id" item-name="requestId"/>
+		<form:token-description description="submission time" item-name="requestSubmissionTime"/>
+		<form:token-description description="request title" item-name="requestTitle"/>
+	</form:token-descriptions>
+Hallo,
+
+der Workflow-Prozess für Ihre Beglaubigungsanforderung ist abgeschlossen.
+
+Anforderungsname: $requestTitle$
+Bestätigungsnummer: $requestId$
+Abgesendet von: $initiatorFullName$
+Abgesendet am: $requestSubmissionTime$
+
+Sie können die Beglaubigungsergebnisse durchsehen, indem Sie auf der Seite 'Beglaubigungsanforderungsstatus anzeigen' die Bestätigungsnummer eingeben.
+
+</form:text>

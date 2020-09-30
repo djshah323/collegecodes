@@ -1,0 +1,309 @@
+RESTDriverShim :Applying policy: %+C%14CNOVLRESTJSON-XDStoJSON%-C.
+RESTDriverShim :  Applying to instance #1.
+RESTDriverShim :    Evaluating selection criteria for rule 'Translate XDS to JSON'.
+RESTDriverShim :    Rule selected.
+RESTDriverShim :    Applying rule 'Translate XDS to JSON'.
+RESTDriverShim :      Action: do-if().
+RESTDriverShim :        Evaluating conditions.
+RESTDriverShim :          (if-operation not-match "status|instance") = FALSE.
+RESTDriverShim :        Performing else actions.
+RESTDriverShim :          Action: do-set-local-variable("status",scope="policy",arg-node-set(token-xml-parse("<status></status>"))).
+RESTDriverShim :            arg-node-set(token-xml-parse("<status></status>"))
+RESTDriverShim :              token-xml-parse("<status></status>")
+RESTDriverShim :                token-xml-parse("<status></status>")
+RESTDriverShim :                  token-text("<status></status>")
+RESTDriverShim :                  Arg Value: "<status></status>".
+RESTDriverShim :              Token Value: {/}.
+RESTDriverShim :              Arg Value: {/}.
+RESTDriverShim :          Action: do-clone-xpath(dest-expression="$status/status",src-expression="/nds/*/instance").
+RESTDriverShim :          Action: do-set-local-variable("xmlInput",scope="policy",token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status"))))).
+RESTDriverShim :            arg-string(token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status")))))
+RESTDriverShim :              token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status"))))
+RESTDriverShim :                token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status"))))
+RESTDriverShim :                  token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status")))
+RESTDriverShim :                    token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status")))
+RESTDriverShim :                      token-xml-serialize(token-xpath("$status"))
+RESTDriverShim :                        token-xml-serialize(token-xpath("$status"))
+RESTDriverShim :                          token-xpath("$status")
+RESTDriverShim :                          Token Value: {/}.
+RESTDriverShim :                          Arg Value: {/}.
+RESTDriverShim :                        Token Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                      Arg Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                    Token Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                  Arg Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                Token Value: "PHN0YXR1cz4KCTxpbnN0YW5jZSBjbGFzcy1uYW1lPSJHcm91cCIgZXZlbnQtaWQ9IjAiIHF1YWxpZmllZC1zcmMtZG49Ik89ZGF0YVxPVT1ncm91cHNcT1U9U2VjdXJpdHlcQ049TWFnYXppbmVOZXdzR3JvdXAiIHNyYy1kbj0iXEtQSEFMXGRhdGFcZ3JvdXBzXFNlY3VyaXR5XE1hZ2F6aW5lTmV3c0dyb3VwIiBzcmMtZW50cnktaWQ9IjMzODgyIj4KCQk8YXNzb2NpYXRpb24gc3RhdGU9ImFzc29jaWF0ZWQiPjMzYTlmMDI0LTU1OWItNGNjZC1hNzhiLWM3YThkNzk0NDFiMjwvYXNzb2NpYXRpb24+CgkJPGF0dHIgYXR0ci1uYW1lPSJEZXNjcmlwdGlvbiI+CgkJCTx2YWx1ZSB0aW1lc3RhbXA9IjEzNjQ0OTAwMTMjOSIgdHlwZT0ic3RyaW5nIj5EZXNjcmlwdGlvbiBvZiBncm91cDwvdmFsdWU+CgkJPC9hdHRyPgoJCTxhdHRyIGF0dHItbmFtZT0iT2JqZWN0IENsYXNzIj4KCQkJPHZhbHVlIHRpbWVzdGFtcD0iMTM2NDQ5MDAxMyMxNSIgdHlwZT0ic3RyaW5nIj5Ub3A8L3ZhbHVlPgoJCQk8dmFsdWUgdGltZXN0YW1wPSIxMzY0NDkwMDEzIzE2IiB0eXBlPSJzdHJpbmciPkdyb3VwPC92YWx1ZT4KCQk8L2F0dHI+Cgk8L2luc3RhbmNlPgo8L3N0YXR1cz4=".
+RESTDriverShim :              Arg Value: "PHN0YXR1cz4KCTxpbnN0YW5jZSBjbGFzcy1uYW1lPSJHcm91cCIgZXZlbnQtaWQ9IjAiIHF1YWxpZmllZC1zcmMtZG49Ik89ZGF0YVxPVT1ncm91cHNcT1U9U2VjdXJpdHlcQ049TWFnYXppbmVOZXdzR3JvdXAiIHNyYy1kbj0iXEtQSEFMXGRhdGFcZ3JvdXBzXFNlY3VyaXR5XE1hZ2F6aW5lTmV3c0dyb3VwIiBzcmMtZW50cnktaWQ9IjMzODgyIj4KCQk8YXNzb2NpYXRpb24gc3RhdGU9ImFzc29jaWF0ZWQiPjMzYTlmMDI0LTU1OWItNGNjZC1hNzhiLWM3YThkNzk0NDFiMjwvYXNzb2NpYXRpb24+CgkJPGF0dHIgYXR0ci1uYW1lPSJEZXNjcmlwdGlvbiI+CgkJCTx2YWx1ZSB0aW1lc3RhbXA9IjEzNjQ0OTAwMTMjOSIgdHlwZT0ic3RyaW5nIj5EZXNjcmlwdGlvbiBvZiBncm91cDwvdmFsdWU+CgkJPC9hdHRyPgoJCTxhdHRyIGF0dHItbmFtZT0iT2JqZWN0IENsYXNzIj4KCQkJPHZhbHVlIHRpbWVzdGFtcD0iMTM2NDQ5MDAxMyMxNSIgdHlwZT0ic3RyaW5nIj5Ub3A8L3ZhbHVlPgoJCQk8dmFsdWUgdGltZXN0YW1wPSIxMzY0NDkwMDEzIzE2IiB0eXBlPSJzdHJpbmciPkdyb3VwPC92YWx1ZT4KCQk8L2F0dHI+Cgk8L2luc3RhbmNlPgo8L3N0YXR1cz4=".
+RESTDriverShim :      Action: do-break().
+RESTDriverShim :  Applying to instance #2.
+RESTDriverShim :    Evaluating selection criteria for rule 'Translate XDS to JSON'.
+RESTDriverShim :    Rule selected.
+RESTDriverShim :    Applying rule 'Translate XDS to JSON'.
+RESTDriverShim :      Action: do-if().
+RESTDriverShim :        Evaluating conditions.
+RESTDriverShim :          (if-operation not-match "status|instance") = FALSE.
+RESTDriverShim :        Performing else actions.
+RESTDriverShim :          Action: do-set-local-variable("status",scope="policy",arg-node-set(token-xml-parse("<status></status>"))).
+RESTDriverShim :            arg-node-set(token-xml-parse("<status></status>"))
+RESTDriverShim :              token-xml-parse("<status></status>")
+RESTDriverShim :                token-xml-parse("<status></status>")
+RESTDriverShim :                  token-text("<status></status>")
+RESTDriverShim :                  Arg Value: "<status></status>".
+RESTDriverShim :              Token Value: {/}.
+RESTDriverShim :              Arg Value: {/}.
+RESTDriverShim :          Action: do-clone-xpath(dest-expression="$status/status",src-expression="/nds/*/instance").
+RESTDriverShim :          Action: do-set-local-variable("xmlInput",scope="policy",token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status"))))).
+RESTDriverShim :            arg-string(token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status")))))
+RESTDriverShim :              token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status"))))
+RESTDriverShim :                token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status"))))
+RESTDriverShim :                  token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status")))
+RESTDriverShim :                    token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status")))
+RESTDriverShim :                      token-xml-serialize(token-xpath("$status"))
+RESTDriverShim :                        token-xml-serialize(token-xpath("$status"))
+RESTDriverShim :                          token-xpath("$status")
+RESTDriverShim :                          Token Value: {/}.
+RESTDriverShim :                          Arg Value: {/}.
+RESTDriverShim :                        Token Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                      Arg Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                    Token Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                  Arg Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                Token Value: "PHN0YXR1cz4KCTxpbnN0YW5jZSBjbGFzcy1uYW1lPSJHcm91cCIgZXZlbnQtaWQ9IjAiIHF1YWxpZmllZC1zcmMtZG49Ik89ZGF0YVxPVT1ncm91cHNcT1U9U2VjdXJpdHlcQ049TWFnYXppbmVOZXdzR3JvdXAiIHNyYy1kbj0iXEtQSEFMXGRhdGFcZ3JvdXBzXFNlY3VyaXR5XE1hZ2F6aW5lTmV3c0dyb3VwIiBzcmMtZW50cnktaWQ9IjMzODgyIj4KCQk8YXNzb2NpYXRpb24gc3RhdGU9ImFzc29jaWF0ZWQiPjMzYTlmMDI0LTU1OWItNGNjZC1hNzhiLWM3YThkNzk0NDFiMjwvYXNzb2NpYXRpb24+CgkJPGF0dHIgYXR0ci1uYW1lPSJEZXNjcmlwdGlvbiI+CgkJCTx2YWx1ZSB0aW1lc3RhbXA9IjEzNjQ0OTAwMTMjOSIgdHlwZT0ic3RyaW5nIj5EZXNjcmlwdGlvbiBvZiBncm91cDwvdmFsdWU+CgkJPC9hdHRyPgoJCTxhdHRyIGF0dHItbmFtZT0iT2JqZWN0IENsYXNzIj4KCQkJPHZhbHVlIHRpbWVzdGFtcD0iMTM2NDQ5MDAxMyMxNSIgdHlwZT0ic3RyaW5nIj5Ub3A8L3ZhbHVlPgoJCQk8dmFsdWUgdGltZXN0YW1wPSIxMzY0NDkwMDEzIzE2IiB0eXBlPSJzdHJpbmciPkdyb3VwPC92YWx1ZT4KCQk8L2F0dHI+Cgk8L2luc3RhbmNlPgo8L3N0YXR1cz4=".
+RESTDriverShim :              Arg Value: "PHN0YXR1cz4KCTxpbnN0YW5jZSBjbGFzcy1uYW1lPSJHcm91cCIgZXZlbnQtaWQ9IjAiIHF1YWxpZmllZC1zcmMtZG49Ik89ZGF0YVxPVT1ncm91cHNcT1U9U2VjdXJpdHlcQ049TWFnYXppbmVOZXdzR3JvdXAiIHNyYy1kbj0iXEtQSEFMXGRhdGFcZ3JvdXBzXFNlY3VyaXR5XE1hZ2F6aW5lTmV3c0dyb3VwIiBzcmMtZW50cnktaWQ9IjMzODgyIj4KCQk8YXNzb2NpYXRpb24gc3RhdGU9ImFzc29jaWF0ZWQiPjMzYTlmMDI0LTU1OWItNGNjZC1hNzhiLWM3YThkNzk0NDFiMjwvYXNzb2NpYXRpb24+CgkJPGF0dHIgYXR0ci1uYW1lPSJEZXNjcmlwdGlvbiI+CgkJCTx2YWx1ZSB0aW1lc3RhbXA9IjEzNjQ0OTAwMTMjOSIgdHlwZT0ic3RyaW5nIj5EZXNjcmlwdGlvbiBvZiBncm91cDwvdmFsdWU+CgkJPC9hdHRyPgoJCTxhdHRyIGF0dHItbmFtZT0iT2JqZWN0IENsYXNzIj4KCQkJPHZhbHVlIHRpbWVzdGFtcD0iMTM2NDQ5MDAxMyMxNSIgdHlwZT0ic3RyaW5nIj5Ub3A8L3ZhbHVlPgoJCQk8dmFsdWUgdGltZXN0YW1wPSIxMzY0NDkwMDEzIzE2IiB0eXBlPSJzdHJpbmciPkdyb3VwPC92YWx1ZT4KCQk8L2F0dHI+Cgk8L2luc3RhbmNlPgo8L3N0YXR1cz4=".
+RESTDriverShim :      Action: do-break().
+RESTDriverShim :  Applying to status #3.
+RESTDriverShim :    Evaluating selection criteria for rule 'Translate XDS to JSON'.
+RESTDriverShim :    Rule selected.
+RESTDriverShim :    Applying rule 'Translate XDS to JSON'.
+RESTDriverShim :      Action: do-if().
+RESTDriverShim :        Evaluating conditions.
+RESTDriverShim :          (if-operation not-match "status|instance") = FALSE.
+RESTDriverShim :        Performing else actions.
+RESTDriverShim :          Action: do-set-local-variable("status",scope="policy",arg-node-set(token-xml-parse("<status></status>"))).
+RESTDriverShim :            arg-node-set(token-xml-parse("<status></status>"))
+RESTDriverShim :              token-xml-parse("<status></status>")
+RESTDriverShim :                token-xml-parse("<status></status>")
+RESTDriverShim :                  token-text("<status></status>")
+RESTDriverShim :                  Arg Value: "<status></status>".
+RESTDriverShim :              Token Value: {/}.
+RESTDriverShim :              Arg Value: {/}.
+RESTDriverShim :          Action: do-clone-xpath(dest-expression="$status/status",src-expression="/nds/*/instance").
+RESTDriverShim :          Action: do-set-local-variable("xmlInput",scope="policy",token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status"))))).
+RESTDriverShim :            arg-string(token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status")))))
+RESTDriverShim :              token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status"))))
+RESTDriverShim :                token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status"))))
+RESTDriverShim :                  token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status")))
+RESTDriverShim :                    token-replace-all("&lt;","<",token-xml-serialize(token-xpath("$status")))
+RESTDriverShim :                      token-xml-serialize(token-xpath("$status"))
+RESTDriverShim :                        token-xml-serialize(token-xpath("$status"))
+RESTDriverShim :                          token-xpath("$status")
+RESTDriverShim :                          Token Value: {/}.
+RESTDriverShim :                          Arg Value: {/}.
+RESTDriverShim :                        Token Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                      Arg Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                    Token Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                  Arg Value: "<status>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+	<instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+		<association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+		<attr attr-name="Description">
+			<value timestamp="1364490013#9" type="string">Description of group</value>
+		</attr>
+		<attr attr-name="Object Class">
+			<value timestamp="1364490013#15" type="string">Top</value>
+			<value timestamp="1364490013#16" type="string">Group</value>
+		</attr>
+	</instance>
+</status>".
+RESTDriverShim :                Token Value: "PHN0YXR1cz4KCTxpbnN0YW5jZSBjbGFzcy1uYW1lPSJHcm91cCIgZXZlbnQtaWQ9IjAiIHF1YWxpZmllZC1zcmMtZG49Ik89ZGF0YVxPVT1ncm91cHNcT1U9U2VjdXJpdHlcQ049TWFnYXppbmVOZXdzR3JvdXAiIHNyYy1kbj0iXEtQSEFMXGRhdGFcZ3JvdXBzXFNlY3VyaXR5XE1hZ2F6aW5lTmV3c0dyb3VwIiBzcmMtZW50cnktaWQ9IjMzODgyIj4KCQk8YXNzb2NpYXRpb24gc3RhdGU9ImFzc29jaWF0ZWQiPjMzYTlmMDI0LTU1OWItNGNjZC1hNzhiLWM3YThkNzk0NDFiMjwvYXNzb2NpYXRpb24+CgkJPGF0dHIgYXR0ci1uYW1lPSJEZXNjcmlwdGlvbiI+CgkJCTx2YWx1ZSB0aW1lc3RhbXA9IjEzNjQ0OTAwMTMjOSIgdHlwZT0ic3RyaW5nIj5EZXNjcmlwdGlvbiBvZiBncm91cDwvdmFsdWU+CgkJPC9hdHRyPgoJCTxhdHRyIGF0dHItbmFtZT0iT2JqZWN0IENsYXNzIj4KCQkJPHZhbHVlIHRpbWVzdGFtcD0iMTM2NDQ5MDAxMyMxNSIgdHlwZT0ic3RyaW5nIj5Ub3A8L3ZhbHVlPgoJCQk8dmFsdWUgdGltZXN0YW1wPSIxMzY0NDkwMDEzIzE2IiB0eXBlPSJzdHJpbmciPkdyb3VwPC92YWx1ZT4KCQk8L2F0dHI+Cgk8L2luc3RhbmNlPgoJPGluc3RhbmNlIGNsYXNzLW5hbWU9Ikdyb3VwIiBldmVudC1pZD0iMCIgcXVhbGlmaWVkLXNyYy1kbj0iTz1kYXRhXE9VPWdyb3Vwc1xPVT1TZWN1cml0eVxDTj1NYWdhemluZU5ld3NHcm91cCIgc3JjLWRuPSJcS1BIQUxcZGF0YVxncm91cHNcU2VjdXJpdHlcTWFnYXppbmVOZXdzR3JvdXAiIHNyYy1lbnRyeS1pZD0iMzM4ODIiPgoJCTxhc3NvY2lhdGlvbiBzdGF0ZT0iYXNzb2NpYXRlZCI+MzNhOWYwMjQtNTU5Yi00Y2NkLWE3OGItYzdhOGQ3OTQ0MWIyPC9hc3NvY2lhdGlvbj4KCQk8YXR0ciBhdHRyLW5hbWU9IkRlc2NyaXB0aW9uIj4KCQkJPHZhbHVlIHRpbWVzdGFtcD0iMTM2NDQ5MDAxMyM5IiB0eXBlPSJzdHJpbmciPkRlc2NyaXB0aW9uIG9mIGdyb3VwPC92YWx1ZT4KCQk8L2F0dHI+CgkJPGF0dHIgYXR0ci1uYW1lPSJPYmplY3QgQ2xhc3MiPgoJCQk8dmFsdWUgdGltZXN0YW1wPSIxMzY0NDkwMDEzIzE1IiB0eXBlPSJzdHJpbmciPlRvcDwvdmFsdWU+CgkJCTx2YWx1ZSB0aW1lc3RhbXA9IjEzNjQ0OTAwMTMjMTYiIHR5cGU9InN0cmluZyI+R3JvdXA8L3ZhbHVlPgoJCTwvYXR0cj4KCTwvaW5zdGFuY2U+Cjwvc3RhdHVzPg==".
+RESTDriverShim :              Arg Value: "PHN0YXR1cz4KCTxpbnN0YW5jZSBjbGFzcy1uYW1lPSJHcm91cCIgZXZlbnQtaWQ9IjAiIHF1YWxpZmllZC1zcmMtZG49Ik89ZGF0YVxPVT1ncm91cHNcT1U9U2VjdXJpdHlcQ049TWFnYXppbmVOZXdzR3JvdXAiIHNyYy1kbj0iXEtQSEFMXGRhdGFcZ3JvdXBzXFNlY3VyaXR5XE1hZ2F6aW5lTmV3c0dyb3VwIiBzcmMtZW50cnktaWQ9IjMzODgyIj4KCQk8YXNzb2NpYXRpb24gc3RhdGU9ImFzc29jaWF0ZWQiPjMzYTlmMDI0LTU1OWItNGNjZC1hNzhiLWM3YThkNzk0NDFiMjwvYXNzb2NpYXRpb24+CgkJPGF0dHIgYXR0ci1uYW1lPSJEZXNjcmlwdGlvbiI+CgkJCTx2YWx1ZSB0aW1lc3RhbXA9IjEzNjQ0OTAwMTMjOSIgdHlwZT0ic3RyaW5nIj5EZXNjcmlwdGlvbiBvZiBncm91cDwvdmFsdWU+CgkJPC9hdHRyPgoJCTxhdHRyIGF0dHItbmFtZT0iT2JqZWN0IENsYXNzIj4KCQkJPHZhbHVlIHRpbWVzdGFtcD0iMTM2NDQ5MDAxMyMxNSIgdHlwZT0ic3RyaW5nIj5Ub3A8L3ZhbHVlPgoJCQk8dmFsdWUgdGltZXN0YW1wPSIxMzY0NDkwMDEzIzE2IiB0eXBlPSJzdHJpbmciPkdyb3VwPC92YWx1ZT4KCQk8L2F0dHI+Cgk8L2luc3RhbmNlPgoJPGluc3RhbmNlIGNsYXNzLW5hbWU9Ikdyb3VwIiBldmVudC1pZD0iMCIgcXVhbGlmaWVkLXNyYy1kbj0iTz1kYXRhXE9VPWdyb3Vwc1xPVT1TZWN1cml0eVxDTj1NYWdhemluZU5ld3NHcm91cCIgc3JjLWRuPSJcS1BIQUxcZGF0YVxncm91cHNcU2VjdXJpdHlcTWFnYXppbmVOZXdzR3JvdXAiIHNyYy1lbnRyeS1pZD0iMzM4ODIiPgoJCTxhc3NvY2lhdGlvbiBzdGF0ZT0iYXNzb2NpYXRlZCI+MzNhOWYwMjQtNTU5Yi00Y2NkLWE3OGItYzdhOGQ3OTQ0MWIyPC9hc3NvY2lhdGlvbj4KCQk8YXR0ciBhdHRyLW5hbWU9IkRlc2NyaXB0aW9uIj4KCQkJPHZhbHVlIHRpbWVzdGFtcD0iMTM2NDQ5MDAxMyM5IiB0eXBlPSJzdHJpbmciPkRlc2NyaXB0aW9uIG9mIGdyb3VwPC92YWx1ZT4KCQk8L2F0dHI+CgkJPGF0dHIgYXR0ci1uYW1lPSJPYmplY3QgQ2xhc3MiPgoJCQk8dmFsdWUgdGltZXN0YW1wPSIxMzY0NDkwMDEzIzE1IiB0eXBlPSJzdHJpbmciPlRvcDwvdmFsdWU+CgkJCTx2YWx1ZSB0aW1lc3RhbXA9IjEzNjQ0OTAwMTMjMTYiIHR5cGU9InN0cmluZyI+R3JvdXA8L3ZhbHVlPgoJCTwvYXR0cj4KCTwvaW5zdGFuY2U+Cjwvc3RhdHVzPg==".
+RESTDriverShim :      Action: do-break().
+RESTDriverShim :Policy returned:
+RESTDriverShim :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product edition="Advanced" version="4.0.2.0">DirXML</product>
+    <contact>Novell, Inc.</contact>
+  </source>
+  <output>
+    <instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+      <association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+      <attr attr-name="Description">
+        <value timestamp="1364490013#9" type="string">Description of group</value>
+      </attr>
+      <attr attr-name="Object Class">
+        <value timestamp="1364490013#15" type="string">Top</value>
+        <value timestamp="1364490013#16" type="string">Group</value>
+      </attr>
+    </instance>
+    <instance class-name="Group" event-id="0" qualified-src-dn="O=data\OU=groups\OU=Security\CN=MagazineNewsGroup" src-dn="\KPHAL\data\groups\Security\MagazineNewsGroup" src-entry-id="33882">
+      <association state="associated">33a9f024-559b-4ccd-a78b-c7a8d79441b2</association>
+      <attr attr-name="Description">
+        <value timestamp="1364490013#9" type="string">Description of group</value>
+      </attr>
+      <attr attr-name="Object Class">
+        <value timestamp="1364490013#15" type="string">Top</value>
+        <value timestamp="1364490013#16" type="string">Group</value>
+      </attr>
+    </instance>
+    <status event-id="0" level="success"/>
+  </output>
+</nds>

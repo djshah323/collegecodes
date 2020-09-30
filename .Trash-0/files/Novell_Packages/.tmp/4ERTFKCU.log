@@ -1,0 +1,65 @@
+RESTDriverShim :Applying policy: %+C%14CNOVLRESTJSON-JSONtoXDS%-C.
+RESTDriverShim :  Applying to status #1.
+RESTDriverShim :    Evaluating selection criteria for rule 'Translate JSON to XDS'.
+RESTDriverShim :    Rule selected.
+RESTDriverShim :    Applying rule 'Translate JSON to XDS'.
+RESTDriverShim :      Action: do-if().
+RESTDriverShim :        Evaluating conditions.
+RESTDriverShim :          (if-operation match "status") = TRUE.
+RESTDriverShim :        Performing if actions.
+RESTDriverShim :          Action: do-if().
+RESTDriverShim :            Evaluating conditions.
+RESTDriverShim :              (if-xpath true "string-length(./driver-operation-data/response/value/text())>0") = TRUE.
+RESTDriverShim :            Performing if actions.
+RESTDriverShim :              Action: do-set-local-variable("xmlInput",scope="policy",token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("."))))).
+RESTDriverShim :                arg-string(token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath(".")))))
+RESTDriverShim :                  token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("."))))
+RESTDriverShim :                    token-base64-encode(charset="UTF-8",token-replace-all("&lt;","<",token-xml-serialize(token-xpath("."))))
+RESTDriverShim :                      token-replace-all("&lt;","<",token-xml-serialize(token-xpath(".")))
+RESTDriverShim :                        token-replace-all("&lt;","<",token-xml-serialize(token-xpath(".")))
+RESTDriverShim :                          token-xml-serialize(token-xpath("."))
+RESTDriverShim :                            token-xml-serialize(token-xpath("."))
+RESTDriverShim :                              token-xpath(".")
+RESTDriverShim :                              Token Value: {<status> @event-id = "linux-djs#20150313151832#1#3:c1d86b91-bdf2-4ac5-e1aa-916bd8c1f2bd" @level = "success" @type = "driver-general"}.
+RESTDriverShim :                              Arg Value: {<status> @event-id = "linux-djs#20150313151832#1#3:c1d86b91-bdf2-4ac5-e1aa-916bd8c1f2bd" @level = "success" @type = "driver-general"}.
+RESTDriverShim :                            Token Value: "<status event-id="linux-djs#20150313151832#1#3:c1d86b91-bdf2-4ac5-e1aa-916bd8c1f2bd" level="success" type="driver-general">
+	<driver-operation-data class-name="User" command="modify" dest-dn="\KPHAL\data\users\india1" event-id="linux-djs#20150313151832#1#3:c1d86b91-bdf2-4ac5-e1aa-916bd8c1f2bd">
+		<response>
+			<url-token association="india1"/>
+			<header content-type="application/json"/>
+			<value>{}</value>
+		</response>
+	</driver-operation-data>
+</status>".
+RESTDriverShim :                          Arg Value: "<status event-id="linux-djs#20150313151832#1#3:c1d86b91-bdf2-4ac5-e1aa-916bd8c1f2bd" level="success" type="driver-general">
+	<driver-operation-data class-name="User" command="modify" dest-dn="\KPHAL\data\users\india1" event-id="linux-djs#20150313151832#1#3:c1d86b91-bdf2-4ac5-e1aa-916bd8c1f2bd">
+		<response>
+			<url-token association="india1"/>
+			<header content-type="application/json"/>
+			<value>{}</value>
+		</response>
+	</driver-operation-data>
+</status>".
+RESTDriverShim :                        Token Value: "<status event-id="linux-djs#20150313151832#1#3:c1d86b91-bdf2-4ac5-e1aa-916bd8c1f2bd" level="success" type="driver-general">
+	<driver-operation-data class-name="User" command="modify" dest-dn="\KPHAL\data\users\india1" event-id="linux-djs#20150313151832#1#3:c1d86b91-bdf2-4ac5-e1aa-916bd8c1f2bd">
+		<response>
+			<url-token association="india1"/>
+			<header content-type="application/json"/>
+			<value>{}</value>
+		</response>
+	</driver-operation-data>
+</status>".
+RESTDriverShim :                      Arg Value: "<status event-id="linux-djs#20150313151832#1#3:c1d86b91-bdf2-4ac5-e1aa-916bd8c1f2bd" level="success" type="driver-general">
+	<driver-operation-data class-name="User" command="modify" dest-dn="\KPHAL\data\users\india1" event-id="linux-djs#20150313151832#1#3:c1d86b91-bdf2-4ac5-e1aa-916bd8c1f2bd">
+		<response>
+			<url-token association="india1"/>
+			<header content-type="application/json"/>
+			<value>{}</value>
+		</response>
+	</driver-operation-data>
+</status>".
+RESTDriverShim :                    Token Value: "PHN0YXR1cyBldmVudC1pZD0ibGludXgtZGpzIzIwMTUwMzEzMTUxODMyIzEjMzpjMWQ4NmI5MS1iZGYyLTRhYzUtZTFhYS05MTZiZDhjMWYyYmQiIGxldmVsPSJzdWNjZXNzIiB0eXBlPSJkcml2ZXItZ2VuZXJhbCI+Cgk8ZHJpdmVyLW9wZXJhdGlvbi1kYXRhIGNsYXNzLW5hbWU9IlVzZXIiIGNvbW1hbmQ9Im1vZGlmeSIgZGVzdC1kbj0iXEtQSEFMXGRhdGFcdXNlcnNcaW5kaWExIiBldmVudC1pZD0ibGludXgtZGpzIzIwMTUwMzEzMTUxODMyIzEjMzpjMWQ4NmI5MS1iZGYyLTRhYzUtZTFhYS05MTZiZDhjMWYyYmQiPgoJCTxyZXNwb25zZT4KCQkJPHVybC10b2tlbiBhc3NvY2lhdGlvbj0iaW5kaWExIi8+CgkJCTxoZWFkZXIgY29udGVudC10eXBlPSJhcHBsaWNhdGlvbi9qc29uIi8+CgkJCTx2YWx1ZT57fTwvdmFsdWU+CgkJPC9yZXNwb25zZT4KCTwvZHJpdmVyLW9wZXJhdGlvbi1kYXRhPgo8L3N0YXR1cz4=".
+RESTDriverShim :                  Arg Value: "PHN0YXR1cyBldmVudC1pZD0ibGludXgtZGpzIzIwMTUwMzEzMTUxODMyIzEjMzpjMWQ4NmI5MS1iZGYyLTRhYzUtZTFhYS05MTZiZDhjMWYyYmQiIGxldmVsPSJzdWNjZXNzIiB0eXBlPSJkcml2ZXItZ2VuZXJhbCI+Cgk8ZHJpdmVyLW9wZXJhdGlvbi1kYXRhIGNsYXNzLW5hbWU9IlVzZXIiIGNvbW1hbmQ9Im1vZGlmeSIgZGVzdC1kbj0iXEtQSEFMXGRhdGFcdXNlcnNcaW5kaWExIiBldmVudC1pZD0ibGludXgtZGpzIzIwMTUwMzEzMTUxODMyIzEjMzpjMWQ4NmI5MS1iZGYyLTRhYzUtZTFhYS05MTZiZDhjMWYyYmQiPgoJCTxyZXNwb25zZT4KCQkJPHVybC10b2tlbiBhc3NvY2lhdGlvbj0iaW5kaWExIi8+CgkJCTxoZWFkZXIgY29udGVudC10eXBlPSJhcHBsaWNhdGlvbi9qc29uIi8+CgkJCTx2YWx1ZT57fTwvdmFsdWU+CgkJPC9yZXNwb25zZT4KCTwvZHJpdmVyLW9wZXJhdGlvbi1kYXRhPgo8L3N0YXR1cz4=".
+RESTDriverShim :              Action: do-set-local-variable("applicationContent",scope="policy",token-xpath("rs:JSONToXDS($xmlInput)")).
+RESTDriverShim :                arg-string(token-xpath("rs:JSONToXDS($xmlInput)"))
+RESTDriverShim :                  token-xpath("rs:JSONToXDS($xmlInput)")

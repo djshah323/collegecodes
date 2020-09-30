@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><form:text xmlns:form="http://www.novell.com/dirxml/workflow/form" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.novell.com/dirxml/workflow/form emailTemplates.xsd">
+	<form:token-descriptions>
+		<form:token-description description="The user's first name" item-name="userFirstName"/>
+		<form:token-description description="Request name" item-name="requestTitle"/>
+		<form:token-description description="Submitted by" item-name="initiatorFullName"/>
+		<form:token-description description="Recipient's full name" item-name="recipientFullName"/>
+		<form:token-description description="The protocol to the provisioning user application.  Typically 'http'." item-name="PROTOCOL"/>
+		<form:token-description description="The secure protocol to the provisioning user application.  Typically 'https'." item-name="SECURE_PROTOCOL"/>
+		<form:token-description description="The host name of the provisioning user application." item-name="HOST"/>
+		<form:token-description description="The port to the provisioning user application." item-name="PORT"/>
+		<form:token-description description="The secure port to the provisioning user application." item-name="SECURE_PORT"/>
+		<form:token-description description="The context/path of the URL to the provisioning user application to get a list of tasks assigned to a email recipient." item-name="TASKLIST_CONTEXT"/>
+		<form:token-description description="The context/path to the provisioning user application to get details of the current task." item-name="TASK_DETAILS"/>
+	</form:token-descriptions>
+Hallo!
+
+Bitte denken Sie daran, dass eine Bereitstellungsanforderung darauf wartet, von Ihnen genehmigt zu werden.
+
+Anforderungsname: $requestTitle$
+Abgesendet von: $initiatorFullName$
+Empfänger: $recipientFullName$
+
+Überprüfen Sie die Details zu dieser Anforderung unter $PROTOCOL$://$HOST$:$PORT$/$TASK_DETAILS$, damit Sie die entsprechende Aktion durchführen können.
+
+Eine Liste aller Anforderungen, bei denen Ihre Genehmigung aussteht, finden Sie unter $PROTOCOL$://$HOST$:$PORT$/$TASKLIST_CONTEXT$.</form:text>

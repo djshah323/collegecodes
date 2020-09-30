@@ -1,0 +1,209 @@
+Multi-DomainAD :Applying policy: %+C%14CNETQMADDCFG-sub-ctp-HandleMovesAndRenames%-C.
+Multi-DomainAD :  Applying to move #1.
+Multi-DomainAD :    Evaluating selection criteria for rule 'set move destination'.
+Multi-DomainAD :      (if-operation equal "move") = TRUE.
+Multi-DomainAD :    Rule selected.
+Multi-DomainAD :    Applying rule 'set move destination'.
+Multi-DomainAD :      Action: do-set-local-variable("src-dn",scope="policy",token-src-dn()).
+Multi-DomainAD :        arg-string(token-src-dn())
+Multi-DomainAD :          token-src-dn()
+Multi-DomainAD :            Token Value: "\KRAJIV-IDM45-NDSTREE\data\users\tiretech\user3".
+Multi-DomainAD :          Arg Value: "\KRAJIV-IDM45-NDSTREE\data\users\tiretech\user3".
+Multi-DomainAD :      Action: do-set-local-variable("qualified-src-dn",scope="policy",token-xpath("./@qualified-src-dn")).
+Multi-DomainAD :        arg-string(token-xpath("./@qualified-src-dn"))
+Multi-DomainAD :          token-xpath("./@qualified-src-dn")
+Multi-DomainAD :            Token Value: "O=data\OU=users\OU=tiretech\CN=user3".
+Multi-DomainAD :          Arg Value: "O=data\OU=users\OU=tiretech\CN=user3".
+Multi-DomainAD :      Action: do-set-local-variable("old-src-dn",scope="policy",token-xpath("@old-src-dn")).
+Multi-DomainAD :        arg-string(token-xpath("@old-src-dn"))
+Multi-DomainAD :          token-xpath("@old-src-dn")
+Multi-DomainAD :            Token Value: "\KRAJIV-IDM45-NDSTREE\data\users\auto\ou1\user3".
+Multi-DomainAD :          Arg Value: "\KRAJIV-IDM45-NDSTREE\data\users\auto\ou1\user3".
+Multi-DomainAD :      Action: do-set-local-variable("qualified-old-src-dn",scope="policy",token-xpath("./@qualified-old-src-dn")).
+Multi-DomainAD :        arg-string(token-xpath("./@qualified-old-src-dn"))
+Multi-DomainAD :          token-xpath("./@qualified-old-src-dn")
+Multi-DomainAD :            Token Value: "O=data\OU=users\OU=auto\OU=ou1\CN=user3".
+Multi-DomainAD :          Arg Value: "O=data\OU=users\OU=auto\OU=ou1\CN=user3".
+Multi-DomainAD :      Action: do-for-each(arg-node-set(token-global-variable("drv.domains"))).
+Multi-DomainAD :        arg-node-set(token-global-variable("drv.domains"))
+Multi-DomainAD :          token-global-variable("drv.domains")
+Multi-DomainAD :          Token Value: {<instance>,<instance>,<instance>}.
+Multi-DomainAD :          Arg Value: {<instance>,<instance>,<instance>}.
+Multi-DomainAD :        Performing actions for local-variable(current-node) = <instance>.
+Multi-DomainAD :          Action: do-set-local-variable("domain_container",scope="policy",token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")).
+Multi-DomainAD :            arg-string(token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()"))
+Multi-DomainAD :              token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")
+Multi-DomainAD :                Token Value: "data\users\acme".
+Multi-DomainAD :              Arg Value: "data\users\acme".
+Multi-DomainAD :          Action: do-if().
+Multi-DomainAD :            Evaluating conditions.
+Multi-DomainAD :              Expanded variable reference '$domain_container$' to 'data\users\acme'.
+Multi-DomainAD :              (if-src-dn in-subtree "$domain_container$") = FALSE.
+Multi-DomainAD :            Performing else actions.
+Multi-DomainAD :              Action: do-set-op-src-dn(arg-dn(token-local-variable("old-src-dn"))).
+Multi-DomainAD :                arg-dn(token-local-variable("old-src-dn"))
+Multi-DomainAD :                  token-local-variable("old-src-dn")
+Multi-DomainAD :                    Token Value: "\KRAJIV-IDM45-NDSTREE\data\users\auto\ou1\user3".
+Multi-DomainAD :                  Arg Value: "\KRAJIV-IDM45-NDSTREE\data\users\auto\ou1\user3".
+Multi-DomainAD :              Action: do-set-xml-attr("qualified-src-dn",".",token-local-variable("qualified-old-src-dn")).
+Multi-DomainAD :                arg-string(token-local-variable("qualified-old-src-dn"))
+Multi-DomainAD :                  token-local-variable("qualified-old-src-dn")
+Multi-DomainAD :                    Token Value: "O=data\OU=users\OU=auto\OU=ou1\CN=user3".
+Multi-DomainAD :                  Arg Value: "O=data\OU=users\OU=auto\OU=ou1\CN=user3".
+Multi-DomainAD :              Action: do-if().
+Multi-DomainAD :                Evaluating conditions.
+Multi-DomainAD :                  Expanded variable reference '$domain_container$' to 'data\users\acme'.
+Multi-DomainAD :                  (if-src-dn in-subtree "$domain_container$") = FALSE.
+Multi-DomainAD :                Performing else actions.
+Multi-DomainAD :              Action: do-set-op-src-dn(arg-dn(token-local-variable("src-dn"))).
+Multi-DomainAD :                arg-dn(token-local-variable("src-dn"))
+Multi-DomainAD :                  token-local-variable("src-dn")
+Multi-DomainAD :                    Token Value: "\KRAJIV-IDM45-NDSTREE\data\users\tiretech\user3".
+Multi-DomainAD :                  Arg Value: "\KRAJIV-IDM45-NDSTREE\data\users\tiretech\user3".
+Multi-DomainAD :              Action: do-set-xml-attr("qualified-src-dn",".",token-local-variable("qualified-src-dn")).
+Multi-DomainAD :                arg-string(token-local-variable("qualified-src-dn"))
+Multi-DomainAD :                  token-local-variable("qualified-src-dn")
+Multi-DomainAD :                    Token Value: "O=data\OU=users\OU=tiretech\CN=user3".
+Multi-DomainAD :                  Arg Value: "O=data\OU=users\OU=tiretech\CN=user3".
+Multi-DomainAD :        Performing actions for local-variable(current-node) = <instance>.
+Multi-DomainAD :          Action: do-set-local-variable("domain_container",scope="policy",token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")).
+Multi-DomainAD :            arg-string(token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()"))
+Multi-DomainAD :              token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")
+Multi-DomainAD :                Token Value: "data\users\auto".
+Multi-DomainAD :              Arg Value: "data\users\auto".
+Multi-DomainAD :          Action: do-if().
+Multi-DomainAD :            Evaluating conditions.
+Multi-DomainAD :              Expanded variable reference '$domain_container$' to 'data\users\auto'.
+Multi-DomainAD :              (if-src-dn in-subtree "$domain_container$") = FALSE.
+Multi-DomainAD :            Performing else actions.
+Multi-DomainAD :              Action: do-set-op-src-dn(arg-dn(token-local-variable("old-src-dn"))).
+Multi-DomainAD :                arg-dn(token-local-variable("old-src-dn"))
+Multi-DomainAD :                  token-local-variable("old-src-dn")
+Multi-DomainAD :                    Token Value: "\KRAJIV-IDM45-NDSTREE\data\users\auto\ou1\user3".
+Multi-DomainAD :                  Arg Value: "\KRAJIV-IDM45-NDSTREE\data\users\auto\ou1\user3".
+Multi-DomainAD :              Action: do-set-xml-attr("qualified-src-dn",".",token-local-variable("qualified-old-src-dn")).
+Multi-DomainAD :                arg-string(token-local-variable("qualified-old-src-dn"))
+Multi-DomainAD :                  token-local-variable("qualified-old-src-dn")
+Multi-DomainAD :                    Token Value: "O=data\OU=users\OU=auto\OU=ou1\CN=user3".
+Multi-DomainAD :                  Arg Value: "O=data\OU=users\OU=auto\OU=ou1\CN=user3".
+Multi-DomainAD :              Action: do-if().
+Multi-DomainAD :                Evaluating conditions.
+Multi-DomainAD :                  Expanded variable reference '$domain_container$' to 'data\users\auto'.
+Multi-DomainAD :                  (if-src-dn in-subtree "$domain_container$") = TRUE.
+Multi-DomainAD :                Performing if actions.
+Multi-DomainAD :                  Action: do-set-xml-attr("old-dest-dn",".",token-src-dn(convert="true",length="1",start="-1")+","+token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")).
+Multi-DomainAD :                    arg-string(token-src-dn(convert="true",length="1",start="-1")+","+token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()"))
+Multi-DomainAD :                      token-src-dn(convert="true",length="1",start="-1")
+Multi-DomainAD :                        Token Value: "CN=user3".
+Multi-DomainAD :                      token-text(",")
+Multi-DomainAD :                      token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")
+Multi-DomainAD :                        Token Value: "ou=newOU,dc=auto,dc=acme,dc=org".
+Multi-DomainAD :                      Arg Value: "CN=user3,ou=newOU,dc=auto,dc=acme,dc=org".
+Multi-DomainAD :              Action: do-set-op-src-dn(arg-dn(token-local-variable("src-dn"))).
+Multi-DomainAD :                arg-dn(token-local-variable("src-dn"))
+Multi-DomainAD :                  token-local-variable("src-dn")
+Multi-DomainAD :                    Token Value: "\KRAJIV-IDM45-NDSTREE\data\users\tiretech\user3".
+Multi-DomainAD :                  Arg Value: "\KRAJIV-IDM45-NDSTREE\data\users\tiretech\user3".
+Multi-DomainAD :              Action: do-set-xml-attr("qualified-src-dn",".",token-local-variable("qualified-src-dn")).
+Multi-DomainAD :                arg-string(token-local-variable("qualified-src-dn"))
+Multi-DomainAD :                  token-local-variable("qualified-src-dn")
+Multi-DomainAD :                    Token Value: "O=data\OU=users\OU=tiretech\CN=user3".
+Multi-DomainAD :                  Arg Value: "O=data\OU=users\OU=tiretech\CN=user3".
+Multi-DomainAD :        Performing actions for local-variable(current-node) = <instance>.
+Multi-DomainAD :          Action: do-set-local-variable("domain_container",scope="policy",token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")).
+Multi-DomainAD :            arg-string(token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()"))
+Multi-DomainAD :              token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")
+Multi-DomainAD :                Token Value: "data\users\tiretech".
+Multi-DomainAD :              Arg Value: "data\users\tiretech".
+Multi-DomainAD :          Action: do-if().
+Multi-DomainAD :            Evaluating conditions.
+Multi-DomainAD :              Expanded variable reference '$domain_container$' to 'data\users\tiretech'.
+Multi-DomainAD :              (if-src-dn in-subtree "$domain_container$") = TRUE.
+Multi-DomainAD :            Performing if actions.
+Multi-DomainAD :              Action: do-set-op-property("unmatched-src-dn",token-unmatched-src-dn(convert="true")).
+Multi-DomainAD :                arg-string(token-unmatched-src-dn(convert="true"))
+Multi-DomainAD :                  token-unmatched-src-dn(convert="true")
+Multi-DomainAD :                    Token Value: "CN=user3".
+Multi-DomainAD :                  Arg Value: "CN=user3".
+Multi-DomainAD :              Action: do-set-local-variable("drv.domain.container.name",scope="policy",token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")).
+Multi-DomainAD :                arg-string(token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()"))
+Multi-DomainAD :                  token-xpath("$current-node/definition[@name="drv.domain.container.name"]/value/text()")
+Multi-DomainAD :                    Token Value: "data\users\tiretech".
+Multi-DomainAD :                  Arg Value: "data\users\tiretech".
+Multi-DomainAD :              Action: do-set-op-property("drv.domain.container.name","\"+token-global-variable("dirxml.auto.treename")+"\"+token-local-variable("drv.domain.container.name")).
+Multi-DomainAD :                arg-string("\"+token-global-variable("dirxml.auto.treename")+"\"+token-local-variable("drv.domain.container.name"))
+Multi-DomainAD :                  token-text("\")
+Multi-DomainAD :                  token-global-variable("dirxml.auto.treename")
+Multi-DomainAD :                    Token Value: "Identity Vault".
+Multi-DomainAD :                  token-text("\")
+Multi-DomainAD :                  token-local-variable("drv.domain.container.name")
+Multi-DomainAD :                    Token Value: "data\users\tiretech".
+Multi-DomainAD :                  Arg Value: "\Identity Vault\data\users\tiretech".
+Multi-DomainAD :              Action: do-set-local-variable("drv.domain.dns.name",scope="policy",token-xpath("$current-node/definition[@name="drv.domain.dns.name"]/value/text()")).
+Multi-DomainAD :                arg-string(token-xpath("$current-node/definition[@name="drv.domain.dns.name"]/value/text()"))
+Multi-DomainAD :                  token-xpath("$current-node/definition[@name="drv.domain.dns.name"]/value/text()")
+Multi-DomainAD :                    Token Value: "tiretech.acme.org".
+Multi-DomainAD :                  Arg Value: "tiretech.acme.org".
+Multi-DomainAD :              Action: do-set-local-variable("drv.user.container",scope="policy",token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")).
+Multi-DomainAD :                arg-string(token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()"))
+Multi-DomainAD :                  token-xpath("$current-node/definition[@name="drv.user.container"]/value/text()")
+Multi-DomainAD :                    Token Value: "cn=users,dc=tiretech,dc=acme,dc=org".
+Multi-DomainAD :                  Arg Value: "cn=users,dc=tiretech,dc=acme,dc=org".
+Multi-DomainAD :              Action: do-set-op-property("drv.user.container",token-local-variable("drv.user.container")).
+Multi-DomainAD :                arg-string(token-local-variable("drv.user.container"))
+Multi-DomainAD :                  token-local-variable("drv.user.container")
+Multi-DomainAD :                    Token Value: "cn=users,dc=tiretech,dc=acme,dc=org".
+Multi-DomainAD :                  Arg Value: "cn=users,dc=tiretech,dc=acme,dc=org".
+Multi-DomainAD :              Action: do-set-local-variable("drv.subPlacementType",scope="policy",token-xpath("$current-node/definition[@name="drv.subPlacementType"]/value/text()")).
+Multi-DomainAD :                arg-string(token-xpath("$current-node/definition[@name="drv.subPlacementType"]/value/text()"))
+Multi-DomainAD :                  token-xpath("$current-node/definition[@name="drv.subPlacementType"]/value/text()")
+Multi-DomainAD :                    Token Value: "mirrored".
+Multi-DomainAD :                  Arg Value: "mirrored".
+Multi-DomainAD :              Action: do-if().
+Multi-DomainAD :                Evaluating conditions.
+Multi-DomainAD :                  (if-local-variable 'drv.subPlacementType' equal "flat") = FALSE.
+Multi-DomainAD :                Performing else actions.
+Multi-DomainAD :                  Action: do-set-local-variable("umatched_container",scope="policy",token-op-property("unmatched-src-dn")).
+Multi-DomainAD :                    arg-string(token-op-property("unmatched-src-dn"))
+Multi-DomainAD :                      token-op-property("unmatched-src-dn")
+Multi-DomainAD :                        Token Value: "CN=user3".
+Multi-DomainAD :                      Arg Value: "CN=user3".
+Multi-DomainAD :                  Action: do-if().
+Multi-DomainAD :                    Evaluating conditions.
+Multi-DomainAD :                      (if-local-variable 'unmatched_container' match "") = FALSE.
+Multi-DomainAD :                    Performing else actions.
+Multi-DomainAD :                      Action: do-set-op-dest-dn(arg-dn(token-local-variable("unmatched_container")+","+token-local-variable("drv.user.container"))).
+Multi-DomainAD :                        arg-dn(token-local-variable("unmatched_container")+","+token-local-variable("drv.user.container"))
+Multi-DomainAD :                          token-local-variable("unmatched_container")
+Multi-DomainAD :                            Token Value: "".
+Multi-DomainAD :                          token-text(",")
+Multi-DomainAD :                          token-local-variable("drv.user.container")
+Multi-DomainAD :                            Token Value: "cn=users,dc=tiretech,dc=acme,dc=org".
+Multi-DomainAD :                          Arg Value: ",cn=users,dc=tiretech,dc=acme,dc=org".
+Multi-DomainAD :                  Action: do-set-op-dest-dn(arg-dn(token-op-property("unmatched-src-dn")+","+token-local-variable("drv.user.container"))).
+Multi-DomainAD :                    arg-dn(token-op-property("unmatched-src-dn")+","+token-local-variable("drv.user.container"))
+Multi-DomainAD :                      token-op-property("unmatched-src-dn")
+Multi-DomainAD :                        Token Value: "CN=user3".
+Multi-DomainAD :                      token-text(",")
+Multi-DomainAD :                      token-local-variable("drv.user.container")
+Multi-DomainAD :                        Token Value: "cn=users,dc=tiretech,dc=acme,dc=org".
+Multi-DomainAD :                      Arg Value: "CN=user3,cn=users,dc=tiretech,dc=acme,dc=org".
+Multi-DomainAD :    Evaluating selection criteria for rule 'associate mirror root'.
+Multi-DomainAD :      (if-operation equal "move") = TRUE.
+Multi-DomainAD :      (if-xpath true "translate(./parent/@src-dn,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=translate(./operation-data/@drv.domain.container.name,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')") = FALSE.
+Multi-DomainAD :    Rule rejected.
+Multi-DomainAD :Policy returned:
+Multi-DomainAD :
+<nds dtdversion="4.0" ndsversion="8.x">
+  <source>
+    <product edition="Advanced" version="4.5.0.0">DirXML</product>
+    <contact>NetIQ Corporation</contact>
+  </source>
+  <input>
+    <move cached-time="20150302110104.668Z" class-name="User" dest-dn="CN=user3,cn=users,dc=tiretech,dc=acme,dc=org" event-id="krajiv-userapp#20150302110104#1#2:281cd4b5-8888-46b0-bd90-b5d41c288888" old-dest-dn="CN=user3,ou=newOU,dc=auto,dc=acme,dc=org" old-src-dn="\KRAJIV-IDM45-NDSTREE\data\users\auto\ou1\user3" qualified-old-src-dn="O=data\OU=users\OU=auto\OU=ou1\CN=user3" qualified-src-dn="O=data\OU=users\OU=tiretech\CN=user3" src-dn="\KRAJIV-IDM45-NDSTREE\data\users\tiretech\user3" timestamp="1425040912#23">
+      <association state="associated">AUTO#eb88463e26bc2c45bf07965bde3da0fe</association>
+      <parent qualified-src-dn="O=data\OU=users\OU=tiretech" src-dn="\KRAJIV-IDM45-NDSTREE\data\users\tiretech" src-entry-id="42762"/>
+      <operation-data drv.domain.container.name="\Identity Vault\data\users\tiretech" drv.user.container="cn=users,dc=tiretech,dc=acme,dc=org" unmatched-src-dn="CN=user3"/>
+    </move>
+  </input>
+</nds>
